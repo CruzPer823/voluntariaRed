@@ -12,10 +12,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/loginfondo"
         tools:ignore="ContentDescription" />
 
@@ -27,7 +27,7 @@
         android:autofillHints=""
         android:background="@android:drawable/editbox_background_normal"
         android:ems="10"
-        android:fontFamily="@font/quicksand_bold"
+        android:fontFamily="@font/quicksand_medium"
         android:hint="Nombre..."
         android:inputType="text"
         android:minHeight="48dp"
@@ -44,9 +44,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:autofillHints=""
         android:background="@android:drawable/editbox_background_normal"
         android:ems="10"
-        android:fontFamily="@font/quicksand_bold"
+        android:fontFamily="@font/quicksand_medium"
         android:hint="Matrícula..."
         android:inputType="text"
         android:minHeight="48dp"
@@ -56,17 +57,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText"
-        tools:ignore="HardcodedText"
-        android:autofillHints="" />
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/editTextText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:autofillHints=""
         android:background="@android:drawable/editbox_background_normal"
         android:ems="10"
-        android:fontFamily="@font/quicksand_bold"
+        android:fontFamily="@font/quicksand_medium"
         android:foregroundTint="#969696"
         android:hint="Nombre de Usuario..."
         android:inputType="text"
@@ -77,17 +78,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText2"
-        tools:ignore="HardcodedText"
-        android:autofillHints="" />
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:autofillHints=""
         android:background="@android:drawable/editbox_background_normal"
         android:ems="10"
-        android:fontFamily="@font/quicksand_bold"
+        android:fontFamily="@font/quicksand_medium"
         android:hint="Contraseña..."
         android:inputType="textPassword"
         android:minHeight="48dp"
@@ -99,8 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText3"
-        tools:ignore="HardcodedText,MissingConstraints"
-        android:autofillHints="" />
+        tools:ignore="HardcodedText,MissingConstraints,TextContrastCheck" />
 
     <Button
         android:id="@+id/button"
