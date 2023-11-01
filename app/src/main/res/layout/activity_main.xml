@@ -16,31 +16,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/loginfondo" />
+        app:srcCompat="@drawable/loginfondo"
+        tools:ignore="ContentDescription" />
 
     <EditText
         android:id="@+id/editTextText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="345dp"
+        android:layout_marginTop="340dp"
+        android:autofillHints=""
         android:background="@android:drawable/editbox_background_normal"
         android:ems="10"
         android:fontFamily="@font/quicksand_bold"
-        android:hint="Nombre.."
+        android:hint="Nombre..."
+        android:inputType="text"
         android:minHeight="48dp"
         android:textColor="#605858"
+        android:textColorHint="#78909C"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText,TextContrastCheck" />
 
     <EditText
         android:id="@+id/editTextText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="278dp"
+        android:layout_marginTop="30dp"
         android:background="@android:drawable/editbox_background_normal"
         android:ems="10"
         android:fontFamily="@font/quicksand_bold"
@@ -48,17 +51,19 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:textColor="#605858"
+        android:textColorHint="#78909C"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText"
-        app:layout_constraintVertical_bias="1.0" />
+        tools:ignore="HardcodedText"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editTextText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:background="@android:drawable/editbox_background_normal"
         android:ems="10"
         android:fontFamily="@font/quicksand_bold"
@@ -67,18 +72,19 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:textColor="#605858"
+        android:textColorHint="#78909C"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText2"
-        app:layout_constraintVertical_bias="0.098" />
+        tools:ignore="HardcodedText"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
-        android:layout_width="226dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="31dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:background="@android:drawable/editbox_background_normal"
         android:ems="10"
         android:fontFamily="@font/quicksand_bold"
@@ -87,28 +93,28 @@
         android:minHeight="48dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"
+        android:textColorHint="#78909C"
         android:textSize="18sp"
         android:typeface="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText3"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="HardcodedText,MissingConstraints"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="#3C81F5"
         android:fontFamily="@font/quicksand_bold"
         android:text="Registrarse"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.384" />
+        app:layout_constraintVertical_bias="0.189"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
