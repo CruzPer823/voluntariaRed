@@ -86,6 +86,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ingresar"
         app:layout_constraintVertical_bias="0.08"
-        tools:ignore="TouchTargetSizeCheck" />
-
+        app:srcCompat="@drawable/loginfondo"
+        android:contentDescription="fondo"
+        tools:ignore="HardcodedText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
