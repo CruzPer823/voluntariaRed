@@ -3,17 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FDF9FC"
     tools:context=".ThirdFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
         android:layout_marginTop="30dp"
+        android:background="#FEFAFD"
         android:fontFamily="@font/quicksand_bold"
+        android:gravity="center_horizontal"
+        android:text="Perfil"
         android:textColor="@color/black"
-        android:textSize="40sp"
-        android:text="Perfil" />
+        android:textSize="40sp" />
 
 </FrameLayout>

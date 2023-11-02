@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B7E0DC"
-    android:backgroundTint="#B7E0DC"
+    android:background="#FDFDFD"
     tools:context=".FirstFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="30dp"
-        android:background="#B4DCD9"
-        android:backgroundTint="@color/green_light_2"
+        android:background="#FEFEFE"
         android:fontFamily="@font/quicksand_bold"
         android:gravity="center_horizontal"
         android:text="HOME"
