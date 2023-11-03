@@ -3,5 +3,6 @@
     <style name="Base.Theme.Voluntaria360" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:statusBarColor">#FD0707</item>
     </style>
 </resources>

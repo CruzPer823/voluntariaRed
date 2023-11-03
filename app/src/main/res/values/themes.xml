@@ -3,10 +3,16 @@
     <style name="Base.Theme.Voluntaria360" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/white</item>
-        <item name="android:statusBarColor">#FE6E6E</item>
     </style>
 
-    <style name="Theme.Voluntaria360" parent="Base.Theme.Voluntaria360" />
+    <style name="Theme.Voluntaria360v1" parent="Base.Theme.Voluntaria360">
+        <item name="android:statusBarColor">#FD0707</item>
+    </style>
+
+    <style name="Theme.Voluntaria360v2" parent="Base.Theme.Voluntaria360">
+        <item name="android:statusBarColor">#FFFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
     <style name="barraMenu">
         <item name="android:background">#F0F0F0</item>
         <item name="itemIconTint">@color/black</item>
