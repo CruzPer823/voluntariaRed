@@ -22,6 +22,7 @@ public class BadgesActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = findViewById(R.id.barra_Menu);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        loadFragment(firstFragment);
     }
     private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @SuppressLint("NonConstantResourceId")
