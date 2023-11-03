@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Voluntaria360</string>
+    <string name="voluntariared">VoluntariaRed</string>
+    <string name="todo">TODO</string>
+    <string name="upload">TODO</string>
+    <string name="profilePic">TODO</string>
     <string name="registrarse">Registrarse</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

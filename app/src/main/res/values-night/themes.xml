@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Voluntaria360" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:statusBarColor">#FE6E6E</item>
+    <style name="Base.Theme.Voluntaria360" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
 </resources>

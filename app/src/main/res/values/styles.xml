@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="appfontbold" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:fontFamily">@font/quicksand_bold</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="appfontregular" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+    </style>
+
+</resources>
