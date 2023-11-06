@@ -1,14 +1,21 @@
 package com.example.voluntaria360;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,11 +32,14 @@ public class EventoFragmentActivity extends AppCompatActivity {
     MyAdapter myAdapter;
     FirebaseFirestore db;
     ProgressDialog progressDialog;
+    SecondFragment secondFragment = new SecondFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eventofragment);
+        BottomNavigationView navigation = findViewById(R.id.barra_Menu);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
@@ -79,4 +89,32 @@ public class EventoFragmentActivity extends AppCompatActivity {
             }
         });
     }
+
+    private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @SuppressLint("NonConstantResourceId")
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            int itemId = item.getItemId();
+            if (itemId == R.id.firstFragment) {
+                startActivity(new Intent(getApplicationContext(), EventoFragmentActivity.class));
+                overridePendingTransition(0,0);
+                return true;
+            } else if (itemId == R.id.secondFragment) {
+                loadFragment(secondFragment);
+                return true;
+            } else if (itemId == R.id.thirdFragment) {
+                startActivity(new Intent(getApplicationContext(), UserPageActivity.class));
+                overridePendingTransition(0,0);
+                return true;
+            }
+            return false;
+        }
+    };
+
+    public void loadFragment(Fragment fragment){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container_Menu,fragment);
+        transaction.commit();
+    }
+
 }
