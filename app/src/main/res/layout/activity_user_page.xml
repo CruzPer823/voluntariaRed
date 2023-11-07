@@ -98,10 +98,11 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="322dp"
-        android:layout_height="172dp"
+        android:layout_width="334dp"
+        android:layout_height="188dp"
         android:background="@drawable/roundcorner"
         android:backgroundTint="#D8D8D8"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -109,8 +110,7 @@
         app:layout_constraintTop_toBottomOf="@+id/profilePic"
         app:layout_constraintVertical_bias="0.1"
         app:srcCompat="@drawable/roundcorner"
-        tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck"
-        android:contentDescription="TODO" />
+        tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
 
     <Button
         android:id="@+id/button"
@@ -162,10 +162,10 @@
         android:text="Información Personal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView5"
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.392"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.078"
         tools:ignore="HardcodedText" />
 
     <Button
@@ -179,7 +179,7 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/button5"
-        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="HardcodedText" />
 
     <Button
@@ -190,9 +190,10 @@
         android:text="Historial de Eventos"
         app:layout_constraintBottom_toBottomOf="@+id/imageView5"
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintHorizontal_bias="0.607"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.865"
+        app:layout_constraintVertical_bias="0.9"
         tools:ignore="HardcodedText" />
 
     <TextView
