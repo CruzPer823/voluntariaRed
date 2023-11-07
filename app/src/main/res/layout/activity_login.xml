@@ -8,15 +8,15 @@
     tools:context=".LoginActivity">
 
     <EditText
-        android:id="@+id/usuario"
+        android:id="@+id/correo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:background="@drawable/round_corner"
         android:ems="10"
         android:fontFamily="@font/quicksand_medium"
-        android:hint="usuario..."
-        android:inputType="text"
+        android:hint="Correo..."
+        android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textColor="#605858"
         android:textColorHint="#78909C"
@@ -37,16 +37,17 @@
         android:ems="10"
         android:fontFamily="@font/quicksand_medium"
         android:hint="Contraseña..."
-        android:inputType="text"
+        android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColor="#605858"
         android:textColorHint="#78909C"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usuario"
-        app:layout_constraintVertical_bias="0.136"
+        app:layout_constraintTop_toBottomOf="@+id/correo"
+        app:layout_constraintVertical_bias="0.178"
         tools:ignore="HardcodedText,TextContrastCheck" />
 
     <Button
@@ -70,7 +71,7 @@
         android:id="@+id/registrarse"
         android:layout_width="110dp"
         android:layout_height="38dp"
-        android:background="@drawable/roundcorner"
+        android:background="@drawable/roundcorner1"
         android:backgroundTint="#34040404"
         android:contentDescription="fondo"
         android:fontFamily="@font/quicksand_bold"
@@ -115,4 +116,5 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintVertical_bias="0.016"
         tools:ignore="TextContrastCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

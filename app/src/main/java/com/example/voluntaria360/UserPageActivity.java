@@ -33,7 +33,25 @@ public class UserPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_page);
         BottomNavigationView navigation = findViewById(R.id.barra_Menu);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setSelectedItemId(R.id.thirdFragment);
+
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int itemId = item.getItemId();
+                if (itemId == R.id.firstFragment) {
+                    startActivity(new Intent(getApplicationContext(), EventoFragmentActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                } else if (itemId == R.id.secondFragment) {
+                    return true;
+                } else if (itemId == R.id.thirdFragment) {
+                    return true;
+                }
+                return false;
+            }
+        });
 
         Button uploadPic = findViewById(R.id.uploadPic);
         uploadPic.setOnClickListener(new View.OnClickListener() {
@@ -85,31 +103,5 @@ public class UserPageActivity extends AppCompatActivity {
             return BitmapFactory.decodeStream(c.getContentResolver().openInputStream(uri), null, o2);
     }
 
-    private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @SuppressLint("NonConstantResourceId")
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            int itemId = item.getItemId();
-            if (itemId == R.id.firstFragment) {
-                startActivity(new Intent(getApplicationContext(), EventoFragmentActivity.class));
-                overridePendingTransition(0,0);
-                return true;
-            } else if (itemId == R.id.secondFragment) {
-                loadFragment(secondFragment);
-                return true;
-            } else if (itemId == R.id.thirdFragment) {
-                startActivity(new Intent(getApplicationContext(), UserPageActivity.class));
-                overridePendingTransition(0,0);
-                return true;
-            }
-            return false;
-        }
-
-        public void loadFragment(Fragment fragment){
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.container_Menu,fragment);
-            transaction.commit();
-        }
-    };
 
 }
