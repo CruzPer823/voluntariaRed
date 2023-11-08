@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/eventoitem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -43,21 +44,25 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_medium"
                 android:text="Fecha del evento: "
-                android:fontFamily="@font/quicksand_medium"
+                android:textColor="#8E8E8E"
                 android:textSize="14dp"
-                android:textColor="#8E8E8E"/>
+                tools:ignore="TextSizeCheck" />
+
             <TextView
+                android:id="@+id/fecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/fecha"
-                android:text="24 de noviembre de 2023"
                 android:fontFamily="@font/quicksand_medium"
+                android:text="24 de noviembre de 2023"
+                android:textColor="#8E8E8E"
                 android:textSize="14dp"
-                android:textColor="#8E8E8E"/>
+                tools:ignore="TextSizeCheck" />
 
         </LinearLayout>
         <TextView
@@ -84,18 +89,19 @@
             android:maxHeight="300dp"
             />
         </LinearLayout>
+
         <Button
-            android:layout_width="81dp"
-            android:layout_height="31dp"
+            android:id="@+id/guardarbtn"
+            android:layout_width="135dp"
+            android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/bluetbtn"
+            android:fontFamily="@font/quicksand_bold"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="Guardar"
+            android:text="Registrar Horas"
             android:textColor="@color/white"
-            android:textSize="10dp"
-            android:fontFamily="@font/quicksand_bold"
-            android:id="@+id/guardarbtn"/>
+            android:textSize="12sp" />
     </LinearLayout>
 
 

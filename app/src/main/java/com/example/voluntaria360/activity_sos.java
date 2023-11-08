@@ -2,25 +2,21 @@ package com.example.voluntaria360;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class BadgesActivity extends AppCompatActivity {
+public class activity_sos extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_badges);
-
+        setContentView(R.layout.activity_sos);
         BottomNavigationView navigation = findViewById(R.id.barra_Menu);
-        navigation.setSelectedItemId(R.id.thirdFragment);
+        navigation.setSelectedItemId(R.id.secondFragment);
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -32,8 +28,6 @@ public class BadgesActivity extends AppCompatActivity {
                     overridePendingTransition(0,0);
                     return true;
                 } else if (itemId == R.id.secondFragment) {
-                    startActivity(new Intent(getApplicationContext(), activity_sos.class));
-                    overridePendingTransition(0,0);
                     return true;
                 } else if (itemId == R.id.thirdFragment) {
                     startActivity(new Intent(getApplicationContext(), UserPageActivity.class));

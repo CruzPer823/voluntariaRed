@@ -76,7 +76,7 @@
         android:ems="10"
         android:fontFamily="@font/quicksand_medium"
         android:foregroundTint="#969696"
-        android:hint="Nombre de Usuario..."
+        android:hint="Correo..."
         android:inputType="text"
         android:minHeight="48dp"
         android:textColor="#605858"
