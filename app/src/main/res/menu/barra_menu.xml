@@ -8,7 +8,7 @@
     <item
         android:id="@+id/secondFragment"
         android:icon="@drawable/sos"
-        android:title="AYUDA"/>
+        android:title="AYUDA" />
     <item
         android:id="@+id/thirdFragment"
         android:icon="@drawable/usr"

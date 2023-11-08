@@ -3,10 +3,7 @@ package com.example.voluntaria360;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -23,14 +20,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.FileNotFoundException;
 
-public class UserPageActivity extends AppCompatActivity {
-
-
+public class addhorasActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_page);
+        setContentView(R.layout.activity_addhoras);
         BottomNavigationView navigation = findViewById(R.id.barra_Menu);
         navigation.setSelectedItemId(R.id.thirdFragment);
 
@@ -48,6 +43,8 @@ public class UserPageActivity extends AppCompatActivity {
                     overridePendingTransition(0,0);
                     return true;
                 } else if (itemId == R.id.thirdFragment) {
+                    startActivity(new Intent(getApplicationContext(), UserPageActivity.class));
+                    overridePendingTransition(0,0);
                     return true;
                 }
                 return false;
@@ -84,25 +81,23 @@ public class UserPageActivity extends AppCompatActivity {
 
     public static Bitmap decodeUri(Context c, Uri uri, final int requiredSize)
             throws FileNotFoundException {
-            BitmapFactory.Options o = new BitmapFactory.Options();
-            o.inJustDecodeBounds = true;
-            BitmapFactory.decodeStream(c.getContentResolver().openInputStream(uri), null, o);
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inJustDecodeBounds = true;
+        BitmapFactory.decodeStream(c.getContentResolver().openInputStream(uri), null, o);
 
-            int width_tmp = o.outWidth, height_tmp = o.outHeight;
-            int scale = 1;
+        int width_tmp = o.outWidth, height_tmp = o.outHeight;
+        int scale = 1;
 
-            while (true) {
-                if (width_tmp / 2 < requiredSize || height_tmp / 2 < requiredSize)
-                    break;
-                width_tmp /= 2;
-                height_tmp /= 2;
-                scale *= 2;
-            }
+        while (true) {
+            if (width_tmp / 2 < requiredSize || height_tmp / 2 < requiredSize)
+                break;
+            width_tmp /= 2;
+            height_tmp /= 2;
+            scale *= 2;
+        }
 
-            BitmapFactory.Options o2 = new BitmapFactory.Options();
-            o2.inSampleSize = scale;
-            return BitmapFactory.decodeStream(c.getContentResolver().openInputStream(uri), null, o2);
+        BitmapFactory.Options o2 = new BitmapFactory.Options();
+        o2.inSampleSize = scale;
+        return BitmapFactory.decodeStream(c.getContentResolver().openInputStream(uri), null, o2);
     }
-
-
 }

@@ -50,7 +50,7 @@ public class EventoFragmentActivity extends AppCompatActivity {
                 if (itemId == R.id.firstFragment) {
                     return true;
                 } else if (itemId == R.id.secondFragment) {
-                    startActivity(new Intent(getApplicationContext(), UserPageActivity.class));
+                    startActivity(new Intent(getApplicationContext(), activity_sos.class));
                     overridePendingTransition(0,0);
                     return true;
                 } else if (itemId == R.id.thirdFragment) {
