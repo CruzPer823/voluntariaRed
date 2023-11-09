@@ -37,13 +37,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Evento evento = eventoArrayList.get(position);
-        if (evento.tipo) {
             holder.titulo.setText(evento.titulo);
             holder.fecha.setText(evento.fecha);
             holder.descripcion.setText(evento.descripcion);
             holder.hrsMax.setText(evento.hrsMax + " horas");
             Glide.with(context).load(evento.imagen).apply(new RequestOptions().override(holder.imagen.getMaxWidth(), holder.imagen.getMaxHeight())).into(holder.imagen);
-        }
     }
 
     @Override

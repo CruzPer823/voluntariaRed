@@ -20,12 +20,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.FileNotFoundException;
 
 public class UserPageActivity extends AppCompatActivity {
 
-
+    Button logOut;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,8 @@ public class UserPageActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.barra_Menu);
         navigation.setSelectedItemId(R.id.thirdFragment);
 
+        logOut = findViewById(R.id.logout);
+        mAuth = FirebaseAuth.getInstance();
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -60,6 +64,15 @@ public class UserPageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, 3);
+            }
+        });
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                finish();
+                startActivity(new Intent(UserPageActivity.this, LoginActivity.class));
             }
         });
     }
