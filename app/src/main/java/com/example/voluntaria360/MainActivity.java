@@ -53,7 +53,10 @@ public class MainActivity extends AppCompatActivity {
 
                 if(nameUsr.isEmpty() && passwordUsr.isEmpty() && usernameUsr.isEmpty() && matriculaUsr.isEmpty()){
                     Toast.makeText(MainActivity.this, "Complete los datos", Toast.LENGTH_SHORT).show();
-                }else{RegisterUser(nameUsr, passwordUsr, usernameUsr, matriculaUsr);}
+                }else if(passwordUsr.length()<6){
+                    Toast.makeText(MainActivity.this, "La contraseña debe ser mayor a 6 caracteres", Toast.LENGTH_SHORT).show();
+                }
+                else{RegisterUser(nameUsr, passwordUsr, usernameUsr, matriculaUsr);}
             }
         });
     }
