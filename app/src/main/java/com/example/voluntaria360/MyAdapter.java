@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
@@ -36,13 +37,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
         Evento evento = eventoArrayList.get(position);
             holder.titulo.setText(evento.titulo);
-            holder.fecha.setText(evento.fecha);
+            holder.fecha.setText(evento.fecha.toString());
             holder.descripcion.setText(evento.descripcion);
             holder.hrsMax.setText(evento.hrsMax + " horas");
             Glide.with(context).load(evento.imagen).apply(new RequestOptions().override(holder.imagen.getMaxWidth(), holder.imagen.getMaxHeight())).into(holder.imagen);
     }
+
+
 
     @Override
     public int getItemCount() {

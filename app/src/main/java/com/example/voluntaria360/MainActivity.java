@@ -72,7 +72,9 @@ public class MainActivity extends AppCompatActivity {
                 map.put("email", usernameUsr);
                 map.put("nombre", nameUsr);
                 map.put("matricula", matriculaUsr);
-                map.put("password", passwordUsr);
+                map.put("hrsAcumaladas", 0);
+                map.put("rol", db.collection("roles").document("voluntario"));
+                //map.put("password", passwordUsr);
 
                 db.collection("users").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
