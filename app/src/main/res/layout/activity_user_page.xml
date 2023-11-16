@@ -140,7 +140,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/logout"
         android:layout_width="125dp"
         android:layout_height="48dp"
         android:background="@drawable/bluetbtn"

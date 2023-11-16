@@ -98,8 +98,10 @@ public class EventoFragmentActivity extends AppCompatActivity {
                 }
 
                 for(DocumentChange dc : value.getDocumentChanges()){
-                    if(dc.getType() == DocumentChange.Type.ADDED ){
-                        eventoArrayList.add(dc.getDocument().toObject(Evento.class));
+                    if(dc.getType() == DocumentChange.Type.ADDED ) {
+                        if (dc.getDocument().toObject(Evento.class).tipo) {
+                            eventoArrayList.add(dc.getDocument().toObject(Evento.class));
+                        }
                     }
                 }
 
