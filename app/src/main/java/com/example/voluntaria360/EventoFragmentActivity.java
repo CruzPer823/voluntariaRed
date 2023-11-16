@@ -32,7 +32,6 @@ public class EventoFragmentActivity extends AppCompatActivity {
     MyAdapter myAdapter;
     FirebaseFirestore db;
     ProgressDialog progressDialog;
-    SecondFragment secondFragment = new SecondFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -15,45 +15,54 @@
         <activity
             android:name=".DiplomaActivity"
             android:exported="true"
-            android:theme="@style/Theme.Voluntaria360v2" />
+            android:theme="@style/Theme.Voluntaria360v2"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".addhorasActivity"
             android:exported="true"
-            android:theme="@style/Theme.Voluntaria360v2" />
+            android:theme="@style/Theme.Voluntaria360v2"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity_sos"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".EventoFragmentActivity"
             android:exported="true"
-            android:theme="@style/Theme.Voluntaria360v2" />
+            android:theme="@style/Theme.Voluntaria360v2"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainFeedActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".UserPageActivity"
             android:exported="true"
-            android:theme="@style/Theme.Voluntaria360v2" />
+            android:theme="@style/Theme.Voluntaria360v2"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".BadgesActivity"
             android:exported="true"
-            android:theme="@style/Theme.Voluntaria360v2" />
+            android:theme="@style/Theme.Voluntaria360v2"
+            android:screenOrientation="portrait"/>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
         <activity
-            android:name=".LoginActivity"
-            android:exported="true">
-            <intent-filter>
+        android:name=".LoginActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

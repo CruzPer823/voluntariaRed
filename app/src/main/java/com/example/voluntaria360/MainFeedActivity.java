@@ -27,16 +27,13 @@ public class MainFeedActivity extends AppCompatActivity {
 
         meventos = findViewById(R.id.eventos);
         manuncios = findViewById(R.id.anuncios);
-        ViewPager viewPager = findViewById(R.id.fragmentcontainer);
         tabLayout=findViewById(R.id.include);
 
         pagerAdapter = new PagerAdapter(getSupportFragmentManager(), 2);
-        viewPager.setAdapter(pagerAdapter);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
                 if(tab.getPosition()==0||tab.getPosition()==1){
                     pagerAdapter.notifyDataSetChanged();
                 }
@@ -51,6 +48,5 @@ public class MainFeedActivity extends AppCompatActivity {
 
             }
         });
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
 }
