@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         password = findViewById(R.id.password);
         correo = findViewById(R.id.correo);
-        matricula = findViewById(R.id.matricula);
+        matricula = findViewById(R.id.correoregistro);
 
         btn_register = findViewById(R.id.registBut);
 
