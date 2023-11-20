@@ -28,8 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-
-        email = findViewById(R.id.correo);
+        email = findViewById(R.id.correologin);
         password = findViewById(R.id.password);
         btnLogin = findViewById(R.id.ingresar);
         btnRegistro = findViewById(R.id.registrarse);

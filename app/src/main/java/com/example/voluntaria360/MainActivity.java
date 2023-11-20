@@ -38,9 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         name = findViewById(R.id.name);
         password = findViewById(R.id.password);
-        correo = findViewById(R.id.correo);
-        matricula = findViewById(R.id.correoregistro);
-
+        correo = findViewById(R.id.correoregistro);
+        matricula = findViewById(R.id.usrname);
         btn_register = findViewById(R.id.registBut);
 
         btn_register.setOnClickListener(new View.OnClickListener() {
