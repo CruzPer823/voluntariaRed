@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,56 +21,67 @@
         android:theme="@style/Theme.Voluntaria360v1"
         tools:targetApi="31">
         <activity
+            android:name=".pictureActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Voluntaria360v2.PopUps"/>
+        <activity
+            android:name=".PopUpActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Voluntaria360v2.PopUps" />
+        <activity
             android:name=".DiplomaActivity"
             android:exported="true"
-            android:theme="@style/Theme.Voluntaria360v2"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Voluntaria360v2" />
         <activity
             android:name=".addhorasActivity"
             android:exported="true"
-            android:theme="@style/Theme.Voluntaria360v2"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Voluntaria360v2" />
         <activity
             android:name=".activity_sos"
             android:exported="true"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".EventoFragmentActivity"
             android:exported="true"
-            android:theme="@style/Theme.Voluntaria360v2"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Voluntaria360v2" />
         <activity
             android:name=".MainFeedActivity"
             android:exported="true"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Voluntaria360v2"/>
         <activity
             android:name=".UserPageActivity"
             android:exported="true"
-            android:theme="@style/Theme.Voluntaria360v2"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Voluntaria360v2" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BadgesActivity"
             android:exported="true"
-            android:theme="@style/Theme.Voluntaria360v2"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Voluntaria360v2" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
         <activity
-        android:name=".LoginActivity"
+            android:name=".LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_register;
+    Button btn_register,btn_log;
     EditText name, password, correo, matricula;
     FirebaseFirestore db;
     FirebaseAuth mAuth;
@@ -41,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
         correo = findViewById(R.id.correoregistro);
         matricula = findViewById(R.id.usrname);
         btn_register = findViewById(R.id.registBut);
+        btn_log = findViewById(R.id.ingBut2);
+
+        btn_log.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
+        });
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         finish();
-                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        Intent register = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(register);
                         Toast.makeText(MainActivity.this, "Registrado Correctamente", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {

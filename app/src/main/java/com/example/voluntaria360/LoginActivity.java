@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                 String passwordUsr = password.getText().toString().trim();
 
                 if(emailUsr.isEmpty() && passwordUsr.isEmpty()){
-                    Toast.makeText(LoginActivity.this, "Ingresar los datos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Ingresar datos solicitados", Toast.LENGTH_SHORT).show();
                 }else{
                     loginUser(emailUsr, passwordUsr);
                 }
@@ -62,7 +62,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     finish();
-                    startActivity(new Intent(LoginActivity.this, UserPageActivity.class));
+                    Intent loginn = new Intent (LoginActivity.this, UserPageActivity.class);
+                    startActivity(loginn);
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -80,7 +81,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
         if(user != null){
-            startActivity(new Intent(LoginActivity.this, UserPageActivity.class));
+            Intent login = new Intent (LoginActivity.this, UserPageActivity.class);
+            startActivity(login);
             finish();
         }
     }

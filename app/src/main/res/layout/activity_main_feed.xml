@@ -1,49 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainFeedActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/testrecyclerview"
+        android:layout_width="397dp"
+        android:layout_height="696dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintVertical_bias="0.017" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/barra_Menu"
+        style="@style/barraMenu"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="0dp"
-        android:background="@color/white"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:elevation="8dp"
+        app:labelVisibilityMode="selected"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testrecyclerview"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/barra_menu" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="VoluntariaRed"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_gravity="center"/>
-
-    </androidx.appcompat.widget.Toolbar>
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="VoluntariaRed"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/include"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/include"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:id="@+id/include"
-        android:layout_below="@+id/toolbar"
-        app:tabTextColor="@color/black"
-        app:tabSelectedTextColor="#FE0101"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.043"
+        app:tabGravity="center"
         app:tabIndicatorColor="#FE0101"
         app:tabIndicatorHeight="3.5dp"
-        android:layout_marginTop="0dp"
         app:tabMode="scrollable"
-        android:backgroundTint="@color/white"
-        app:tabGravity="center"
-        app:tabTextAppearance="@style/appfontbold">
+        app:tabSelectedTextColor="#FE0101"
+        app:tabTextAppearance="@style/appfontbold"
+        app:tabTextColor="@color/black">
+
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/eventos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Eventos"
-            android:id="@+id/eventos"/>
+            android:text="Eventos" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/anuncios"
@@ -54,4 +83,4 @@
     </com.google.android.material.tabs.TabLayout>
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
