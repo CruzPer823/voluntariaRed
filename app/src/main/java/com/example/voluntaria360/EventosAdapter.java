@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +15,14 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
+
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+
 
 public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHolder> {
 
@@ -57,6 +66,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            Button button = itemView.findViewById(R.id.guardarbtn);
             titulo = itemView.findViewById(R.id.eventotitulo);
             fecha = itemView.findViewById(R.id.fecha);
             descripcion = itemView.findViewById(R.id.descripcion);

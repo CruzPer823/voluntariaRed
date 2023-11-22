@@ -5,21 +5,29 @@ import com.google.firebase.Timestamp;
 import java.sql.Time;
 
 public class Evento {
-    String titulo,descripcion,imagen,fechaEvento;
+    String titulo,descripcion,imagen,fechaEvento,id;
     Timestamp fecha;
     Integer hrsMax;
     Boolean tipo;
-
     public Evento(){}
 
-    public Evento(String titulo, Timestamp fecha, String descripcion, String imagen, Integer hrsMax, Boolean tipo, String fechaEvento) {
+    public Evento(String titulo, Timestamp fecha, String descripcion, String imagen, Integer hrsMax, Boolean tipo, String fechaEvento, String id) {
         this.titulo = titulo;
+        this.id = id;
         this.fecha = fecha;
         this.descripcion = descripcion;
         this.imagen = imagen;
         this.hrsMax = hrsMax;
         this.tipo = tipo;
         this.fechaEvento = fechaEvento;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFechaEvento() {
