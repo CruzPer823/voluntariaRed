@@ -29,6 +29,11 @@
             android:exported="true"
             android:theme="@style/Theme.Voluntaria360v2.PopUps" />
         <activity
+            android:name=".AnuncioFragmentActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Voluntaria360v2"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".DiplomaActivity"
             android:exported="true"
             android:screenOrientation="portrait"

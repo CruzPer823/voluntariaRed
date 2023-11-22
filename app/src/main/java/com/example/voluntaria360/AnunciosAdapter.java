@@ -13,57 +13,51 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class AnunciosAdapter extends RecyclerView.Adapter<AnunciosAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<Evento> eventoArrayList;
+    ArrayList<Anuncio> anuncioArrayList;
 
-    public MyAdapter(Context context, ArrayList<Evento> eventoArrayList) {
+    public AnunciosAdapter(Context context, ArrayList<Anuncio> anuncioArrayList) {
         this.context = context;
-        this.eventoArrayList = eventoArrayList;
+        this.anuncioArrayList = anuncioArrayList;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.eventositem, parent, false);
+        View v = LayoutInflater.from(context).inflate(R.layout.anunciositem, parent, false);
 
         return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
-        Evento evento = eventoArrayList.get(position);
-            holder.titulo.setText(evento.titulo);
-            holder.fecha.setText(evento.fechaEvento);
-            holder.descripcion.setText(evento.descripcion);
-            holder.hrsMax.setText(evento.hrsMax + " horas");
-            Glide.with(context).load(evento.imagen).apply(new RequestOptions().override(holder.imagen.getMaxWidth(), holder.imagen.getMaxHeight())).into(holder.imagen);
+        Anuncio anuncio = anuncioArrayList.get(position);
+        holder.titulo.setText(anuncio.titulo);
+        //holder.descripcion.setText(anuncio.descripcion);
+        //Glide.with(context).load(anuncio.imagen).apply(new RequestOptions().override(holder.imagen.getMaxWidth(), holder.imagen.getMaxHeight())).into(holder.imagen);
     }
 
 
 
     @Override
     public int getItemCount() {
-        return eventoArrayList.size();
+        return anuncioArrayList.size();
     }
 
     public  static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView titulo,fecha,descripcion, hrsMax;
+        TextView titulo,descripcion;
         ImageView imagen;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             titulo = itemView.findViewById(R.id.eventotitulo);
-            fecha = itemView.findViewById(R.id.fecha);
             descripcion = itemView.findViewById(R.id.descripcion);
             imagen = itemView.findViewById(R.id.imagen);
-            hrsMax = itemView.findViewById(R.id.horas);
         }
     }
 }

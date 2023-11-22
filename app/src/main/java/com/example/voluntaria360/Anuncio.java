@@ -2,40 +2,29 @@ package com.example.voluntaria360;
 
 import com.google.firebase.Timestamp;
 
-import java.sql.Time;
-
-public class Evento {
-    String titulo,descripcion,imagen,fechaEvento,id;
+public class Anuncio {
+    String titulo,descripcion,imagen;
     Timestamp fecha;
-    Integer hrsMax;
     Boolean tipo;
-    public Evento(){}
+    Integer hrsMax;
 
-    public Evento(String titulo, Timestamp fecha, String descripcion, String imagen, Integer hrsMax, Boolean tipo, String fechaEvento, String id) {
+    public Anuncio(){}
+
+    public Anuncio(String titulo, Timestamp fecha, String descripcion, String imagen, Integer hrsMax, Boolean tipo) {
         this.titulo = titulo;
-        this.id = id;
         this.fecha = fecha;
         this.descripcion = descripcion;
         this.imagen = imagen;
-        this.hrsMax = hrsMax;
         this.tipo = tipo;
-        this.fechaEvento = fechaEvento;
+        this.hrsMax = hrsMax;
     }
 
-    public String getId() {
-        return id;
+    public Integer getHrsMax() {
+        return hrsMax;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getFechaEvento() {
-        return fechaEvento;
-    }
-
-    public void setFechaEvento(String fechaEvento) {
-        this.fechaEvento = fechaEvento;
+    public void setHrsMax(Integer hrsMax) {
+        this.hrsMax = hrsMax;
     }
 
     public String getTitulo() {
@@ -52,14 +41,6 @@ public class Evento {
 
     public void setTipo(Boolean tipo) {
         this.tipo = tipo;
-    }
-
-    public Integer gethrsMax() {
-        return hrsMax;
-    }
-
-    public void sethrsMax(Integer hrsMax) {
-        this.hrsMax = hrsMax;
     }
 
     public String getImagen() {

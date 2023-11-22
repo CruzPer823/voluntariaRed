@@ -22,18 +22,18 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class EventoFragmentActivity extends AppCompatActivity {
+public class AnuncioFragmentActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    ArrayList<Evento> eventoArrayList;
-    EventosAdapter eventosAdapter;
+    ArrayList<Anuncio> anuncioArrayList;
+    AnunciosAdapter anunciosAdapter;
     FirebaseFirestore db;
     ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eventofragment);
+        setContentView(R.layout.activity_anunciofragment);
 
         BottomNavigationView navigation = findViewById(R.id.barra_Menu);
         navigation.setSelectedItemId(R.id.firstFragment);
@@ -71,10 +71,10 @@ public class EventoFragmentActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         db = FirebaseFirestore.getInstance();
-        eventoArrayList = new ArrayList<Evento>();
-        eventosAdapter = new EventosAdapter(EventoFragmentActivity.this, eventoArrayList);
+        anuncioArrayList = new ArrayList<Anuncio>();
+        anunciosAdapter = new AnunciosAdapter(AnuncioFragmentActivity.this, anuncioArrayList);
 
-        recyclerView.setAdapter(eventosAdapter);
+        recyclerView.setAdapter(anunciosAdapter);
 
         EventChangeListener();
     }
@@ -82,36 +82,32 @@ public class EventoFragmentActivity extends AppCompatActivity {
     private void EventChangeListener() {
         db.collection("anuncios").orderBy("fecha", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                if(error != null){
+                        if(error != null){
 
-                    if(progressDialog.isShowing()){
-                        progressDialog.dismiss();
-                    }
-                    Log.e("Firestore error", error.getMessage());
-                    return;
-                }
+                            if(progressDialog.isShowing()){
+                                progressDialog.dismiss();
+                            }
+                            Log.e("Firestore error", error.getMessage());
+                            return;
+                        }
 
-                for(DocumentChange dc : value.getDocumentChanges()){
-                    if(dc.getType() == DocumentChange.Type.ADDED ) {
-                        if (dc.getDocument().toObject(Evento.class).tipo) {
+                        for(DocumentChange dc : value.getDocumentChanges()){
+                            if(dc.getType() == DocumentChange.Type.ADDED ) {
+                                if (!(dc.getDocument().toObject(Anuncio.class).tipo)) {
+                                    anuncioArrayList.add(dc.getDocument().toObject(Anuncio.class));
+                                }
+                            }
+                        }
 
-                            Evento doc = dc.getDocument().toObject(Evento.class);
-                            doc.setId(dc.getDocument().getId());
-
-                            eventoArrayList.add(doc);
+                        anunciosAdapter.notifyDataSetChanged();
+                        if(progressDialog.isShowing()){
+                            progressDialog.dismiss();
                         }
                     }
-                }
-
-                eventosAdapter.notifyDataSetChanged();
-                if(progressDialog.isShowing()){
-                    progressDialog.dismiss();
-                }
-            }
-        });
+                });
     }
 
 
