@@ -58,6 +58,7 @@ public class UserPageActivity extends AppCompatActivity {
         back = findViewById(R.id.returnbtn);
         totalHours = findViewById(R.id.totalhours);
         changePic = findViewById(R.id.uploadPic);
+        savedEvents = findViewById(R.id.savedEvents);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         user = mAuth.getCurrentUser();
@@ -79,6 +80,13 @@ public class UserPageActivity extends AppCompatActivity {
                     return true;
                 }
                 return false;
+            }
+        });
+
+        savedEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserPageActivity.this, SavedEventoFragmentActivity.class));
             }
         });
 

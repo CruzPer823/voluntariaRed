@@ -46,7 +46,6 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_savedeventofragment);
 
-/*
         BottomNavigationView navigation = findViewById(R.id.barra_Menu);
         navigation.setSelectedItemId(R.id.thirdFragment);
 
@@ -69,7 +68,6 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
                 return false;
             }
         });
-*/
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
@@ -86,6 +84,7 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
         db2 = FirebaseFirestore.getInstance();
         eventoList = new ArrayList<Evento>();
         savedEventoArrayList = new ArrayList<Evento>();
+        registros = new ArrayList<HorasVoluntarios>();
         eventosAdapter = new SavedEventosAdapter(SavedEventoFragmentActivity.this, savedEventoArrayList);
 
         recyclerView.setAdapter(eventosAdapter);
@@ -124,7 +123,7 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
                 });
 
         for(HorasVoluntarios doc : registros){
-            DocumentReference docRef = db.collection("anuncios").document(doc.evento);
+            DocumentReference docRef = db.collection("anuncios").document("/" + doc.evento);
             docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -135,5 +134,4 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
             });
         }
     }
-
 }

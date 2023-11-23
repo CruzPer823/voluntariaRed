@@ -59,7 +59,7 @@ public class SavedEventosAdapter extends RecyclerView.Adapter<SavedEventosAdapte
 
                 if (holder.button.getText() != "Guardado"){
                     Map<String, Object> data = new HashMap<>();
-                    data.put("evento", evento.id);
+                    data.put("evento", evento.idEvento);
                     data.put("idVoluntario", FirebaseAuth.getInstance().getCurrentUser().getUid());
                     db.collection("horasVoluntarios").add(data);
                 }
