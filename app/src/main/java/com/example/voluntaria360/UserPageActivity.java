@@ -68,7 +68,7 @@ public class UserPageActivity extends AppCompatActivity {
 
                 int itemId = item.getItemId();
                 if (itemId == R.id.firstFragment) {
-                    startActivity(new Intent(getApplicationContext(), AnuncioFragmentActivity.class));
+                    startActivity(new Intent(getApplicationContext(), MainFeedActivity.class));
                     overridePendingTransition(0,0);
                     return true;
                 } else if (itemId == R.id.secondFragment) {
@@ -111,8 +111,10 @@ public class UserPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mAuth.signOut();
+                Intent logout = new Intent(getApplicationContext(), LoginActivity.class);
+                logout.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(logout);
                 finish();
-                startActivity(new Intent(UserPageActivity.this, LoginActivity.class));
             }
         });
         db.collection("users").document(user.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {

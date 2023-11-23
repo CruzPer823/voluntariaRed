@@ -30,12 +30,13 @@ public class MainFeedActivity extends AppCompatActivity {
 
     TabLayout tabLayout;
     TabItem meventos, manuncios;
-    PagerAdapter pagerAdapter;
     RecyclerView recyclerView;
     ArrayList<Evento> eventoArrayList;
-    MyAdapter myAdapter;
+    EventosAdapter myAdapter;
     FirebaseFirestore db;
     ProgressDialog progressDialog;
+    ArrayList<Anuncio> anuncioArrayList;
+    AnunciosAdapter anunciosAdapter;
 
 
     @Override
@@ -49,44 +50,43 @@ public class MainFeedActivity extends AppCompatActivity {
         manuncios = findViewById(R.id.anuncios);
         tabLayout=findViewById(R.id.include);
 
-        pagerAdapter = new PagerAdapter(getSupportFragmentManager(), 2);
 
-
-        myAdapter = new MyAdapter(MainFeedActivity.this, eventoArrayList);
+        anunciosAdapter = new AnunciosAdapter(MainFeedActivity.this, anuncioArrayList);
         progressDialog = new ProgressDialog(this);
         recyclerView = findViewById(R.id.testrecyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         db = FirebaseFirestore.getInstance();
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("LocoOo");
-        progressDialog.setMessage("LocOoO");
+        progressDialog.setMessage("Cargando");
+        progressDialog.setMessage("Cargando");
         progressDialog.show();
-
         eventoArrayList = new ArrayList<Evento>();
-        myAdapter = new MyAdapter(getApplicationContext(), eventoArrayList);
-
+        myAdapter = new EventosAdapter(getApplicationContext(), eventoArrayList);
         recyclerView.setAdapter(myAdapter);
-
         EventChangeListener();
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if(tab.getPosition()==0||tab.getPosition()==1){
-                    pagerAdapter.notifyDataSetChanged();
+                if(tab.getPosition()==1){
+                    progressDialog.setCancelable(false);
+                    progressDialog.setMessage("Cargando");
+                    progressDialog.setMessage("Cargando");
+                    progressDialog.show();
+                    anuncioArrayList=new ArrayList<Anuncio>();
+                    anunciosAdapter = new AnunciosAdapter(MainFeedActivity.this, anuncioArrayList);
+                    recyclerView.setAdapter(anunciosAdapter);
+                    AdChangeListener();
                 }
                 if(tab.getPosition()==0){
                     progressDialog.setCancelable(false);
-                    progressDialog.setMessage("LocoOo");
-                    progressDialog.setMessage("LocOoO");
+                    progressDialog.setMessage("Cargando");
+                    progressDialog.setMessage("Cargando");
                     progressDialog.show();
-
                     eventoArrayList = new ArrayList<Evento>();
-                    myAdapter = new MyAdapter(getApplicationContext(), eventoArrayList);
-
+                    myAdapter = new EventosAdapter(getApplicationContext(), eventoArrayList);
                     recyclerView.setAdapter(myAdapter);
-
                     EventChangeListener();
                 }
             }
@@ -106,8 +106,6 @@ public class MainFeedActivity extends AppCompatActivity {
 
                 int itemId = item.getItemId();
                 if (itemId == R.id.firstFragment) {
-                    startActivity(new Intent(getApplicationContext(), EventoFragmentActivity.class));
-                    overridePendingTransition(0,0);
                     return true;
                 } else if (itemId == R.id.secondFragment) {
                     startActivity(new Intent(getApplicationContext(), activity_sos.class));
@@ -121,6 +119,36 @@ public class MainFeedActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+    private void AdChangeListener() {
+        db.collection("anuncios").orderBy("fecha", Query.Direction.ASCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                        if(error != null){
+
+                            if(progressDialog.isShowing()){
+                                progressDialog.dismiss();
+                            }
+                            Log.e("Firestore error", error.getMessage());
+                            return;
+                        }
+
+                        for(DocumentChange dc : value.getDocumentChanges()){
+                            if(dc.getType() == DocumentChange.Type.ADDED ) {
+                                if (!(dc.getDocument().toObject(Anuncio.class).tipo)) {
+                                    anuncioArrayList.add(dc.getDocument().toObject(Anuncio.class));
+                                }
+                            }
+                        }
+
+                        anunciosAdapter.notifyDataSetChanged();
+                        if(progressDialog.isShowing()){
+                            progressDialog.dismiss();
+                        }
+                    }
+                });
     }
 
     private void EventChangeListener() {

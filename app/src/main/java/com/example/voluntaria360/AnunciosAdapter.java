@@ -38,8 +38,8 @@ public class AnunciosAdapter extends RecyclerView.Adapter<AnunciosAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Anuncio anuncio = anuncioArrayList.get(position);
         holder.titulo.setText(anuncio.titulo);
-        //holder.descripcion.setText(anuncio.descripcion);
-        //Glide.with(context).load(anuncio.imagen).apply(new RequestOptions().override(holder.imagen.getMaxWidth(), holder.imagen.getMaxHeight())).into(holder.imagen);
+        holder.descripcion.setText(anuncio.descripcion);
+        Glide.with(context).load(anuncio.imagen).apply(new RequestOptions().override(holder.imagen.getMaxWidth(), holder.imagen.getMaxHeight())).into(holder.imagen);
     }
 
 
