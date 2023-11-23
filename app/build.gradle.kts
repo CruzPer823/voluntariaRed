@@ -50,5 +50,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-storage-ktx:20.3.0")
+    implementation("com.vanniktech:android-image-cropper:4.5.0")
+    implementation ("com.squareup.picasso:picasso:2.5.2" )
 
 }

@@ -97,7 +97,7 @@
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/exportar"
         android:layout_width="125dp"
         android:layout_height="48dp"
         android:background="@drawable/bluetbtn"
@@ -114,9 +114,9 @@
     <TextView
         android:id="@+id/congratsMessage"
         android:layout_width="266dp"
-        android:layout_height="69dp"
+        android:layout_height="94dp"
         android:fontFamily="@font/quicksand_bold"
-        android:text="Felicidades por haber completado de manera satisfactoria tus horas de servicio"
+        android:text="¡Felicidades por haber completado de manera satisfactoria horas de servicio voluntario!"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -128,7 +128,7 @@
         app:layout_constraintVertical_bias="0.192" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/quicksand_medium"

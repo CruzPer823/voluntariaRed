@@ -28,6 +28,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 
+
 public class pictureActivity extends AppCompatActivity {
     Button aceptar,cancelar;
     TextView changePic;
