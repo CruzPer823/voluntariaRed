@@ -14,20 +14,35 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.FileNotFoundException;
 
 public class UserPageActivity extends AppCompatActivity {
 
-    Button logOut;
+    Button logOut,badges,changePic,historyEvents,totalHours,savedEvents,back;
     FirebaseAuth mAuth;
+    FirebaseFirestore db;
+    FirebaseUser user;
+    TextView nameTv, usrnameTv, mailTv;
+    ImageView profileImage;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +50,25 @@ public class UserPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_page);
         BottomNavigationView navigation = findViewById(R.id.barra_Menu);
         navigation.setSelectedItemId(R.id.thirdFragment);
-
+        nameTv=findViewById(R.id.nameusr);
+        usrnameTv=findViewById(R.id.usrname2);
+        mailTv=findViewById(R.id.usrmail);
         logOut = findViewById(R.id.logout);
+        badges = findViewById(R.id.badges);
+        back = findViewById(R.id.returnbtn);
+        totalHours = findViewById(R.id.totalhours);
+        changePic = findViewById(R.id.uploadPic);
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+        user = mAuth.getCurrentUser();
+
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 int itemId = item.getItemId();
                 if (itemId == R.id.firstFragment) {
-                    startActivity(new Intent(getApplicationContext(), AnuncioFragmentActivity.class));
+                    startActivity(new Intent(getApplicationContext(), MainFeedActivity.class));
                     overridePendingTransition(0,0);
                     return true;
                 } else if (itemId == R.id.secondFragment) {
@@ -58,12 +82,28 @@ public class UserPageActivity extends AppCompatActivity {
             }
         });
 
-        Button uploadPic = findViewById(R.id.uploadPic);
-        uploadPic.setOnClickListener(new View.OnClickListener() {
+        changePic.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 3);
+            public void onClick(View v) {
+                startActivity(new Intent(UserPageActivity.this, pictureActivity.class));
+            }
+        });
+        totalHours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserPageActivity.this, PopUpActivity.class));
+            }
+        });
+        badges.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserPageActivity.this, BadgesActivity.class));
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserPageActivity.this, MainFeedActivity.class));
             }
         });
 
@@ -71,51 +111,28 @@ public class UserPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mAuth.signOut();
+                Intent logout = new Intent(getApplicationContext(), LoginActivity.class);
+                logout.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(logout);
                 finish();
-                startActivity(new Intent(UserPageActivity.this, LoginActivity.class));
             }
         });
-    }
+        db.collection("users").document(user.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists()){
+                    String nombre = documentSnapshot.getString("nombre");
+                    String correo = documentSnapshot.getString("email");
+                    String usrname = documentSnapshot.getString("matricula");
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && data != null){
-            Uri selectedImage = data.getData();
-            ImageView imageView = findViewById(R.id.profilePic);
-            Button uploadbtn = findViewById(R.id.uploadPic);
-            Bitmap newImage = null;
-            try {
-                newImage = decodeUri(this.getApplicationContext(), selectedImage, 290);
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
+                    nameTv.setText("Hola, "+nombre+"!");
+                    usrnameTv.setText(usrname);
+                    mailTv.setText(correo);
+                }
+
             }
-            imageView.setImageBitmap(newImage);
-            uploadbtn.setBackground(null);
-        }
+        });
+
     }
-
-    public static Bitmap decodeUri(Context c, Uri uri, final int requiredSize)
-            throws FileNotFoundException {
-            BitmapFactory.Options o = new BitmapFactory.Options();
-            o.inJustDecodeBounds = true;
-            BitmapFactory.decodeStream(c.getContentResolver().openInputStream(uri), null, o);
-
-            int width_tmp = o.outWidth, height_tmp = o.outHeight;
-            int scale = 1;
-
-            while (true) {
-                if (width_tmp / 2 < requiredSize || height_tmp / 2 < requiredSize)
-                    break;
-                width_tmp /= 2;
-                height_tmp /= 2;
-                scale *= 2;
-            }
-
-            BitmapFactory.Options o2 = new BitmapFactory.Options();
-            o2.inSampleSize = scale;
-            return BitmapFactory.decodeStream(c.getContentResolver().openInputStream(uri), null, o2);
-    }
-
 
 }

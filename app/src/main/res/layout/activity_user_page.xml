@@ -43,28 +43,6 @@
         app:layout_constraintVertical_bias="0.041" />
 
 
-        <ImageView
-            android:id="@+id/profilePic"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:adjustViewBounds="true"
-            android:background="@drawable/roundcorner"
-            android:backgroundTint="#28787878"
-            android:contentDescription="@string/profilePic"
-            android:cropToPadding="false"
-            android:scaleType="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.171" />
-
-
     <Button
         android:id="@+id/uploadPic"
         android:layout_width="100dp"
@@ -82,6 +60,27 @@
         app:layout_constraintVertical_bias="0.54"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <ImageView
+        android:id="@+id/profilePic"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:adjustViewBounds="true"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#28787878"
+        android:contentDescription="@string/profilePic"
+        android:cropToPadding="false"
+        android:scaleType="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16" />
+
     <Button
         android:id="@+id/returnbtn"
         android:layout_width="40dp"
@@ -96,24 +95,8 @@
         app:layout_constraintVertical_bias="0.023"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="334dp"
-        android:layout_height="188dp"
-        android:background="@drawable/roundcorner"
-        android:backgroundTint="#D8D8D8"
-        android:contentDescription="TODO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePic"
-        app:layout_constraintVertical_bias="0.1"
-        app:srcCompat="@drawable/roundcorner"
-        tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
-
     <Button
-        android:id="@+id/button"
+        android:id="@+id/badges"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/badgebutton"
@@ -126,7 +109,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/savedEvents"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="116dp"
@@ -135,7 +118,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.819"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button"
+        app:layout_constraintTop_toTopOf="@+id/badges"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -150,50 +133,50 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button"
+        app:layout_constraintTop_toTopOf="@+id/badges"
         app:layout_constraintVertical_bias="0.641"
         tools:ignore="HardcodedText,TouchTargetSizeCheck,TextSizeCheck" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/totalhours"
         android:layout_width="306dp"
         android:layout_height="48dp"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="Información Personal"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-        app:layout_constraintEnd_toEndOf="@+id/imageView5"
-        app:layout_constraintHorizontal_bias="0.392"
-        app:layout_constraintStart_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.078"
-        tools:ignore="HardcodedText" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="306dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginBottom="24dp"
         android:fontFamily="@font/quicksand_bold"
         android:text="Horas Totales"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintBottom_toTopOf="@+id/hisrtoryEvents"
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/button5"
-        app:layout_constraintVertical_bias="0.0"
         tools:ignore="HardcodedText" />
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="326dp"
+        android:layout_height="141dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#D8D8D8"
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePic"
+        app:layout_constraintVertical_bias="0.161"
+        app:srcCompat="@drawable/roundcorner"
+        tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
+
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/hisrtoryEvents"
         android:layout_width="306dp"
         android:layout_height="48dp"
         android:fontFamily="@font/quicksand_bold"
         android:text="Historial de Eventos"
         app:layout_constraintBottom_toBottomOf="@+id/imageView5"
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
-        app:layout_constraintHorizontal_bias="0.607"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintVertical_bias="0.86"
         tools:ignore="HardcodedText" />
 
     <TextView
@@ -208,7 +191,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.201"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/badges"
         app:layout_constraintVertical_bias="0.032" />
 
     <TextView
@@ -223,7 +206,51 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.87"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/savedEvents"
         app:layout_constraintVertical_bias="0.032" />
+
+    <TextView
+        android:id="@+id/nameusr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="Nombre"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toEndOf="@+id/profilePic"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.132" />
+
+    <TextView
+        android:id="@+id/usrmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="correo"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toEndOf="@+id/profilePic"
+        app:layout_constraintTop_toBottomOf="@+id/usrname2"
+        app:layout_constraintVertical_bias="0.051" />
+
+    <TextView
+        android:id="@+id/usrname2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="usuario"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toEndOf="@+id/profilePic"
+        app:layout_constraintTop_toBottomOf="@+id/nameusr"
+        app:layout_constraintVertical_bias="0.044" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

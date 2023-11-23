@@ -7,50 +7,54 @@
     app:cardElevation="8dp"
     app:cardCornerRadius="8dp"
     android:layout_margin="16dp">
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:orientation="vertical"
-        android:paddingBottom="16dp"
-        android:paddingTop="10dp">
+        android:paddingTop="10dp"
+        android:paddingBottom="16dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="horizontal">
+
             <TextView
+                android:id="@+id/eventotitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/eventotitulo"
+                android:fontFamily="@font/quicksand_bold"
                 android:text="Titulo"
                 android:textColor="@color/black"
-                android:fontFamily="@font/quicksand_bold"
-                android:textSize="18dp"/>
+                android:textSize="18dp" />
         </LinearLayout>
+
         <TextView
             android:id="@+id/descripcion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisi tortor, porttitor ac molestie eget, egestas eget magna. Nullam vitae orci tristique, iaculis diam non, vulputate ligula. Vestibulum mauris nisi"
-            android:textSize="16dp"
-            android:textColor="@color/black"
-            android:justificationMode="inter_word"
             android:fontFamily="@font/quicksand_medium"
-            />
+            android:justificationMode="inter_word"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisi tortor, porttitor ac molestie eget, egestas eget magna. Nullam vitae orci tristique, iaculis diam non, vulputate ligula. Vestibulum mauris nisi"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:paddingTop="16dp">
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
             <ImageView
                 android:id="@+id/imagen"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
                 android:maxWidth="1000dp"
-                android:maxHeight="300dp"
-                />
+                android:maxHeight="300dp" />
         </LinearLayout>
 
     </LinearLayout>

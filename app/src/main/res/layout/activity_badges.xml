@@ -9,7 +9,7 @@
     android:backgroundTint="#FFFFFF">
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/hours10"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:contentDescription="locoooo"
@@ -22,7 +22,7 @@
         app:srcCompat="@drawable/badge_ukn" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/horas20"
         android:layout_width="130dp"
         android:layout_height="130dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,75 +80,51 @@
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/horas30"
         android:layout_width="130dp"
         android:layout_height="130dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="0.034"
+        app:layout_constraintTop_toBottomOf="@+id/hours10"
+        app:layout_constraintVertical_bias="0.187"
         app:srcCompat="@drawable/badge_ukn" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/horas50"
         android:layout_width="130dp"
         android:layout_height="130dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.094"
+        app:layout_constraintTop_toBottomOf="@+id/horas30"
+        app:layout_constraintVertical_bias="0.386"
         app:srcCompat="@drawable/badge_ukn" />
 
     <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:layout_constraintVertical_bias="0.308"
-        app:srcCompat="@drawable/badge_ukn" />
-
-    <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/horas40"
         android:layout_width="130dp"
         android:layout_height="130dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.893"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        app:layout_constraintVertical_bias="0.032"
+        app:layout_constraintTop_toBottomOf="@+id/horas20"
+        app:layout_constraintVertical_bias="0.187"
         app:srcCompat="@drawable/badge_ukn" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/horas60"
         android:layout_width="130dp"
         android:layout_height="130dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.857"
+        app:layout_constraintHorizontal_bias="0.893"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.094"
-        app:srcCompat="@drawable/badge_ukn" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.857"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9"
-        app:layout_constraintVertical_bias="0.32"
+        app:layout_constraintTop_toBottomOf="@+id/horas40"
+        app:layout_constraintVertical_bias="0.386"
         app:srcCompat="@drawable/badge_ukn" />
 
 
