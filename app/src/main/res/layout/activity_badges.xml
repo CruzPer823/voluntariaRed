@@ -8,30 +8,20 @@
     android:background="#FFFFFF"
     android:backgroundTint="#FFFFFF">
 
-    <ImageView
-        android:id="@+id/hours10"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:contentDescription="locoooo"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="40 HORAS"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/horas60"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintHorizontal_bias="0.813"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.159"
-        app:srcCompat="@drawable/badge_ukn" />
-
-    <ImageView
-        android:id="@+id/horas20"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.159"
-        app:srcCompat="@drawable/badge_ukn" />
+        app:layout_constraintTop_toBottomOf="@+id/horas40"
+        app:layout_constraintVertical_bias="0.153"
+        tools:text="40 HORAS" />
 
     <TextView
         android:id="@+id/appLabel"
@@ -79,53 +69,161 @@
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    <ImageView
+    <Button
+        android:id="@+id/hours10"
+        android:layout_width="130dp"
+        android:layout_height="128dp"
+        android:background="@drawable/badge_ukn"
+        android:fontFamily="@font/quicksand_bold"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.198" />
+
+    <Button
         android:id="@+id/horas30"
         android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_height="128dp"
+        android:background="@drawable/badge_ukn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintHorizontal_bias="0.102"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hours10"
-        app:layout_constraintVertical_bias="0.187"
-        app:srcCompat="@drawable/badge_ukn" />
+        app:layout_constraintVertical_bias="0.169" />
 
-    <ImageView
+    <Button
         android:id="@+id/horas50"
         android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_height="128dp"
+        android:background="@drawable/badge_ukn"
+        android:fontFamily="@font/quicksand_bold"
+        android:textAlignment="center"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintHorizontal_bias="0.102"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horas30"
-        app:layout_constraintVertical_bias="0.386"
-        app:srcCompat="@drawable/badge_ukn" />
+        app:layout_constraintVertical_bias="0.424" />
 
-    <ImageView
+    <Button
         android:id="@+id/horas40"
         android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_height="128dp"
+        android:background="@drawable/badge_ukn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horas20"
-        app:layout_constraintVertical_bias="0.187"
-        app:srcCompat="@drawable/badge_ukn" />
+        app:layout_constraintVertical_bias="0.169" />
 
-    <ImageView
+    <Button
         android:id="@+id/horas60"
         android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_height="128dp"
+        android:background="@drawable/badge_ukn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintHorizontal_bias="0.863"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horas40"
-        app:layout_constraintVertical_bias="0.386"
-        app:srcCompat="@drawable/badge_ukn" />
+        app:layout_constraintVertical_bias="0.424" />
+
+    <Button
+        android:id="@+id/horas20"
+        android:layout_width="130dp"
+        android:layout_height="128dp"
+        android:background="@drawable/badge_ukn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.198" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="10 HORAS"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/horas30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hours10"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="10 HORAS" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="30 HORAS"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/horas50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horas30"
+        app:layout_constraintVertical_bias="0.153"
+        tools:text="30 HORAS" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="50 HORAS"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horas50"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="50 HORAS" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="60 HORAS"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.798"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horas60"
+        app:layout_constraintVertical_bias="0.093"
+        tools:text="60 HORAS" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="20 HORAS"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/horas40"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horas20"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="20 HORAS" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
