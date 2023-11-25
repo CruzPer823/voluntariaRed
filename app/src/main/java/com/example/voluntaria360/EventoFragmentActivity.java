@@ -100,10 +100,12 @@ public class EventoFragmentActivity extends AppCompatActivity {
                         if (dc.getDocument().toObject(Evento.class).tipo) {
 
                             Evento doc = dc.getDocument().toObject(Evento.class);
+
                             doc.idEvento = dc.getDocument().getId();
-                            doc.setIdEvento(dc.getDocument().getId());
+                            Log.i("ID", dc.getDocument().getId());
 
                             eventoArrayList.add(doc);
+                            Log.i("ID ARRAY LIST", eventoArrayList.get(eventoArrayList.size() - 1).idEvento);
                         }
                     }
                 }

@@ -1,6 +1,7 @@
 package com.example.voluntaria360;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Evento evento = eventoArrayList.get(position);
+        Log.i("ID EVENTO LOCOOOOOOOOOOOOOO", evento.idEvento);
             holder.titulo.setText(evento.titulo);
             holder.fecha.setText(evento.fechaEvento);
             holder.descripcion.setText(evento.descripcion);
@@ -67,6 +69,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
                 data.put("hrs", 0);
                 data.put("idVoluntario", FirebaseAuth.getInstance().getCurrentUser().getUid());
 
+                Log.i("ID EVENTO TO FIRESTORE", evento.idEvento);
                 db.collection("horasVoluntarios").add(data);
             }
         });
