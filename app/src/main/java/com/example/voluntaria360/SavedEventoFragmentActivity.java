@@ -89,6 +89,7 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(eventosAdapter);
 
+        CollectEventos();
         EventChangeListener();
     }
 
@@ -112,9 +113,24 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
                             if(dc.getType() == DocumentChange.Type.ADDED ) {
                                 HorasVoluntarios doc = dc.getDocument().toObject(HorasVoluntarios.class);
                                 registros.add(doc);
+                                Log.i("REGISTRO EVENTO", registros.get(registros.size()-1).evento);
+                                Log.i("REGISTRO USUARIO", registros.get(registros.size()-1).idVoluntario);
+
+                                for(Evento evento : eventoList){
+                                    Log.i("FOR LOOP EVENTO ID", evento.idEvento);
+                                    for(HorasVoluntarios registro : registros){
+                                        Log.i("FOR LOOP REGISTRO ID:", registro.evento);
+                                        if(Objects.equals(evento.getIdEvento(), registro.getEvento())){
+                                            Log.i("MATCHING EVENT FOUND:", evento.idEvento);
+                                            if(!savedEventoArrayList.contains(evento)){
+                                                savedEventoArrayList.add(evento);
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
-
+                        //EventChangeListener2();
                         eventosAdapter.notifyDataSetChanged();
                         if(progressDialog.isShowing()){
                             progressDialog.dismiss();
@@ -122,16 +138,82 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
                     }
                 });
 
-        for(HorasVoluntarios doc : registros){
-            DocumentReference docRef = db.collection("anuncios").document("/" + doc.evento);
-            docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    Evento evento = documentSnapshot.toObject(Evento.class);
-                    evento.setTitulo("hola");
-                    savedEventoArrayList.add(evento);
-                }
-            });
+
+    }
+
+    private void CollectEventos() {
+        db.collection("anuncios").orderBy("fecha", Query.Direction.ASCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                        if(error != null){
+
+                            if(progressDialog.isShowing()){
+                                progressDialog.dismiss();
+                            }
+                            Log.e("Firestore error", error.getMessage());
+                            return;
+                        }
+
+                        for(DocumentChange dc : value.getDocumentChanges()){
+                            if(dc.getType() == DocumentChange.Type.ADDED ) {
+                                if (dc.getDocument().toObject(Evento.class).tipo) {
+
+                                    Evento doc = dc.getDocument().toObject(Evento.class);
+
+                                    doc.idEvento = dc.getDocument().getId();
+                                    Log.i("COLLECT EVENTOS", dc.getDocument().getId());
+
+                                    eventoList.add(doc);
+                                    Log.i("COLLECT EVENTOS", eventoList.get(eventoList.size() - 1).idEvento);
+                                }
+                            }
+                        }
+
+                        if(progressDialog.isShowing()){
+                            progressDialog.dismiss();
+                        }
+                    }
+                });
+    }
+
+    private void EventChangeListener2() {
+        for (HorasVoluntarios doc : registros) {
+            db.collection("anuncios").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                        @Override
+                        public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                            if(error != null){
+
+                                if(progressDialog.isShowing()){
+                                    progressDialog.dismiss();
+                                }
+                                Log.e("Firestore error", error.getMessage());
+                                return;
+                            }
+
+                            for(DocumentChange dc : value.getDocumentChanges()){
+                                if(dc.getType() == DocumentChange.Type.ADDED ) {
+                                    if (dc.getDocument().getId() == doc.evento) {
+
+                                        Evento evento = dc.getDocument().toObject(Evento.class);
+
+                                        evento.idEvento = dc.getDocument().getId();
+                                        Log.i("FOUND MATCHING ID", dc.getDocument().getId());
+
+                                        savedEventoArrayList.add(evento);
+                                        Log.i("ID ARRAY LIST", savedEventoArrayList.get(savedEventoArrayList.size() - 1).idEvento);
+                                    }
+                                }
+                            }
+
+                            eventosAdapter.notifyDataSetChanged();
+                            if(progressDialog.isShowing()){
+                                progressDialog.dismiss();
+                            }
+                        }
+                    });
         }
     }
 }
