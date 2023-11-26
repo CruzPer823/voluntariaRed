@@ -169,7 +169,14 @@ public class MainFeedActivity extends AppCompatActivity {
                         for(DocumentChange dc : value.getDocumentChanges()){
                             if(dc.getType() == DocumentChange.Type.ADDED ) {
                                 if (dc.getDocument().toObject(Evento.class).tipo) {
-                                    eventoArrayList.add(dc.getDocument().toObject(Evento.class));
+
+                                    Evento doc = dc.getDocument().toObject(Evento.class);
+
+                                    doc.idEvento = dc.getDocument().getId();
+                                    Log.i("ID", dc.getDocument().getId());
+
+                                    eventoArrayList.add(doc);
+                                    Log.i("ID ARRAY LIST", eventoArrayList.get(eventoArrayList.size() - 1).idEvento);
                                 }
                             }
                         }
