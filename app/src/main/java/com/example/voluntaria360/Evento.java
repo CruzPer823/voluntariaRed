@@ -9,10 +9,10 @@ public class Evento {
     String titulo,descripcion,imagen,fechaEvento,idEvento;
     Timestamp fecha;
     Integer hrsMax;
-    Boolean tipo;
+    Boolean tipo, saved;
     public Evento(){}
 
-    public Evento(String titulo, Timestamp fecha, String descripcion, String imagen, Integer hrsMax, Boolean tipo, String fechaEvento, String idEvento) {
+    public Evento(String titulo, Timestamp fecha, String descripcion, String imagen, Integer hrsMax, Boolean tipo, String fechaEvento, String idEvento, Boolean saved) {
         this.titulo = titulo;
         this.idEvento = idEvento;
         this.fecha = fecha;
@@ -21,6 +21,15 @@ public class Evento {
         this.hrsMax = hrsMax;
         this.tipo = tipo;
         this.fechaEvento = fechaEvento;
+        this.saved = saved;
+    }
+
+    public Boolean getSaved() {
+        return saved;
+    }
+
+    public void setSaved(Boolean saved) {
+        this.saved = saved;
     }
 
     public String getIdEvento() {

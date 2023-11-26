@@ -1,6 +1,7 @@
 package com.example.voluntaria360;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +53,11 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Evento evento = eventoArrayList.get(position);
         Log.i("ID EVENTO LOCOOOOOOOOOOOOOO", evento.idEvento);
+        if (evento.saved){
+            holder.saveButton.setEnabled(false);
+            holder.saveButton.setText("Evento Guardado");
+            holder.saveButton.setBackgroundResource(R.drawable.savedbutton);
+        }
             holder.titulo.setText(evento.titulo);
             holder.fecha.setText(evento.fechaEvento);
             holder.descripcion.setText(evento.descripcion);

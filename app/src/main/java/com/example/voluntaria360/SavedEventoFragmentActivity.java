@@ -55,7 +55,7 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
 
                 int itemId = item.getItemId();
                 if (itemId == R.id.firstFragment) {
-                    startActivity(new Intent(getApplicationContext(), EventoFragmentActivity.class));
+                    startActivity(new Intent(getApplicationContext(), MainFeedActivity.class));
                     overridePendingTransition(0,0);
                     return true;
                 } else if (itemId == R.id.secondFragment) {
@@ -137,8 +137,6 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
     }
 
     private void CollectEventos() {
