@@ -79,6 +79,7 @@ public class EventoFragmentActivity extends AppCompatActivity {
         EventChangeListener();
     }
 
+
     private void EventChangeListener() {
         db.collection("anuncios").orderBy("fecha", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -99,9 +100,12 @@ public class EventoFragmentActivity extends AppCompatActivity {
                         if (dc.getDocument().toObject(Evento.class).tipo) {
 
                             Evento doc = dc.getDocument().toObject(Evento.class);
-                            doc.setId(dc.getDocument().getId());
+
+                            doc.idEvento = dc.getDocument().getId();
+                            Log.i("ID", dc.getDocument().getId());
 
                             eventoArrayList.add(doc);
+                            Log.i("ID ARRAY LIST", eventoArrayList.get(eventoArrayList.size() - 1).idEvento);
                         }
                     }
                 }

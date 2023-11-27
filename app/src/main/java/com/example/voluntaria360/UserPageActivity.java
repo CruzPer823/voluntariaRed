@@ -37,7 +37,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.squareup.picasso.Picasso;
 
 import java.io.FileNotFoundException;
 
@@ -47,7 +46,6 @@ public class UserPageActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore db;
     FirebaseUser user;
-    DatabaseReference databaseReference;
     TextView nameTv, usrnameTv, mailTv;
     ImageView profileImage;
 
@@ -68,10 +66,10 @@ public class UserPageActivity extends AppCompatActivity {
         totalHours = findViewById(R.id.totalhours);
         changePic = findViewById(R.id.uploadPic);
         profileImage = findViewById(R.id.profilePic);
+        savedEvents = findViewById(R.id.savedEvents);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         user = mAuth.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("User");
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -90,6 +88,13 @@ public class UserPageActivity extends AppCompatActivity {
                     return true;
                 }
                 return false;
+            }
+        });
+
+        savedEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserPageActivity.this, SavedEventoFragmentActivity.class));
             }
         });
 

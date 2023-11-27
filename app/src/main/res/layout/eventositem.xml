@@ -107,7 +107,7 @@
             android:fontFamily="@font/quicksand_bold"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="Registrar Horas"
+            android:text="Guardar Evento"
             android:textColor="@color/white"
             android:textSize="12sp" />
     </LinearLayout>
