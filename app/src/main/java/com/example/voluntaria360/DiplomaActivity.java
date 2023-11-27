@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,9 +21,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class DiplomaActivity extends AppCompatActivity {
     Button back,exportar;
+    TextView date;
+    ImageView profileImage;
     FirebaseAuth mAuth;
     FirebaseFirestore db;
     FirebaseUser user;
@@ -34,6 +43,8 @@ public class DiplomaActivity extends AppCompatActivity {
         navigation.setSelectedItemId(R.id.thirdFragment);
         back = findViewById(R.id.returnbtn);
         exportar = findViewById(R.id.exportar);
+        profileImage = findViewById(R.id.usrPic);
+        date = findViewById(R.id.date);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         user = mAuth.getCurrentUser();
@@ -76,6 +87,24 @@ public class DiplomaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 askPermissions();
 
+            }
+        });
+        String fecha = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault()).format(new Date());
+        date.setText(fecha);
+        getUsrInfo();
+    }
+    private void getUsrInfo(){
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()){
+
+                    if(documentSnapshot.contains("image")){
+                        String image = documentSnapshot.getString("image");
+                        profileImage.setBackgroundResource(R.drawable.transparentbtn);
+                        Picasso.get().load(image).into(profileImage);
+                    }
+                }
             }
         });
     }

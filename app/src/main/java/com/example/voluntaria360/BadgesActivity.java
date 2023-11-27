@@ -112,7 +112,7 @@ public class BadgesActivity extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
-                    Long horas = documentSnapshot.getLong("hrsAcumaladas");
+                    Long horas = documentSnapshot.getLong("hrsAcumuladas");
                     Integer h =horas.intValue();
                     h10.setEnabled(false);
                     h20.setEnabled(false);

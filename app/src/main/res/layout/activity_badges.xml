@@ -71,8 +71,8 @@
 
     <Button
         android:id="@+id/hours10"
-        android:layout_width="130dp"
-        android:layout_height="128dp"
+        android:layout_width="135dp"
+        android:layout_height="125dp"
         android:background="@drawable/badge_ukn"
         android:fontFamily="@font/quicksand_bold"
         android:textAlignment="center"
@@ -86,8 +86,8 @@
 
     <Button
         android:id="@+id/horas30"
-        android:layout_width="130dp"
-        android:layout_height="128dp"
+        android:layout_width="135dp"
+        android:layout_height="125dp"
         android:background="@drawable/badge_ukn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,8 +98,8 @@
 
     <Button
         android:id="@+id/horas50"
-        android:layout_width="130dp"
-        android:layout_height="128dp"
+        android:layout_width="135dp"
+        android:layout_height="125dp"
         android:background="@drawable/badge_ukn"
         android:fontFamily="@font/quicksand_bold"
         android:textAlignment="center"
@@ -113,8 +113,8 @@
 
     <Button
         android:id="@+id/horas40"
-        android:layout_width="130dp"
-        android:layout_height="128dp"
+        android:layout_width="135dp"
+        android:layout_height="125dp"
         android:background="@drawable/badge_ukn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -125,8 +125,8 @@
 
     <Button
         android:id="@+id/horas60"
-        android:layout_width="130dp"
-        android:layout_height="128dp"
+        android:layout_width="135dp"
+        android:layout_height="125dp"
         android:background="@drawable/badge_ukn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,8 +137,8 @@
 
     <Button
         android:id="@+id/horas20"
-        android:layout_width="130dp"
-        android:layout_height="128dp"
+        android:layout_width="135dp"
+        android:layout_height="125dp"
         android:background="@drawable/badge_ukn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

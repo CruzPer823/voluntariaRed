@@ -54,7 +54,7 @@ public class PopUpActivity extends Activity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
-                    Long horasAcumuladas = documentSnapshot.getLong("hrsAcumaladas");
+                    Long horasAcumuladas = documentSnapshot.getLong("hrsAcumuladas");
                     horas.setText(String.valueOf(horasAcumuladas));
                 }
             }
