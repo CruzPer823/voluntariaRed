@@ -49,12 +49,13 @@
             android:paddingTop="16dp"
             android:paddingBottom="16dp">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imagen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxWidth="1000dp"
-                android:maxHeight="300dp" />
+                android:maxHeight="300dp"
+                app:shapeAppearanceOverlay="@style/RoundedSquare"/>
         </LinearLayout>
 
     </LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.voluntaria360;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -28,8 +30,14 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.io.FileNotFoundException;
 
@@ -39,6 +47,7 @@ public class UserPageActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore db;
     FirebaseUser user;
+    DatabaseReference databaseReference;
     TextView nameTv, usrnameTv, mailTv;
     ImageView profileImage;
 
@@ -58,9 +67,11 @@ public class UserPageActivity extends AppCompatActivity {
         back = findViewById(R.id.returnbtn);
         totalHours = findViewById(R.id.totalhours);
         changePic = findViewById(R.id.uploadPic);
+        profileImage = findViewById(R.id.profilePic);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         user = mAuth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("User");
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -133,6 +144,23 @@ public class UserPageActivity extends AppCompatActivity {
             }
         });
 
-    }
+        getUsrInfo();
 
+    }
+    private void getUsrInfo(){
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()){
+
+                    if(documentSnapshot.contains("image")){
+                        String image = documentSnapshot.getString("image");
+                        profileImage.setBackgroundResource(R.drawable.transparentbtn);
+                        changePic.setBackgroundResource(R.drawable.transparentbtn);
+                        Picasso.get().load(image).into(profileImage);
+                    }
+                }
+            }
+        });
+    }
 }
