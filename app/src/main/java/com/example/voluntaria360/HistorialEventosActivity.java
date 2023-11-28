@@ -25,27 +25,28 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.auth.User;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class SavedEventoFragmentActivity extends AppCompatActivity {
+public class HistorialEventosActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ArrayList<Evento> eventoList;
     ArrayList<Evento> savedEventoArrayList;
     ArrayList<HorasVoluntarios> registros;
-    SavedEventosAdapter eventosAdapter;
+    HistorialEventosAdapter eventosAdapter;
     FirebaseFirestore db;
     FirebaseFirestore db2;
     ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("ENTERED ACTIVITY", "SAVEDEVENTOSFRAGMENTACTIVITY");
+        Log.i("ENTERED ACTIVITY", "HISTORIALEVENTOSFRAGMENTACTIVITY");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_savedeventofragment);
+        setContentView(R.layout.activity_historiaeventofragment);
 
         BottomNavigationView navigation = findViewById(R.id.barra_Menu);
         navigation.setSelectedItemId(R.id.thirdFragment);
@@ -64,6 +65,8 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
                     overridePendingTransition(0,0);
                     return true;
                 } else if (itemId == R.id.thirdFragment) {
+                    startActivity(new Intent(getApplicationContext(), UserPageActivity.class));
+                    overridePendingTransition(0,0);
                     return true;
                 }
                 return false;
@@ -86,7 +89,7 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
         eventoList = new ArrayList<Evento>();
         savedEventoArrayList = new ArrayList<Evento>();
         registros = new ArrayList<HorasVoluntarios>();
-        eventosAdapter = new SavedEventosAdapter(SavedEventoFragmentActivity.this, savedEventoArrayList);
+        eventosAdapter = new HistorialEventosAdapter(HistorialEventosActivity.this, savedEventoArrayList);
 
         recyclerView.setAdapter(eventosAdapter);
 
@@ -97,7 +100,7 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
 
     private void EventChangeListener() {
 
-        db2.collection("horasVoluntarios").whereEqualTo("idVoluntario", FirebaseAuth.getInstance().getCurrentUser().getUid()).whereEqualTo("aprobadas", false)
+        db2.collection("horasVoluntarios").whereEqualTo("idVoluntario", FirebaseAuth.getInstance().getCurrentUser().getUid()).whereEqualTo("aprobadas", true)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -114,22 +117,22 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
                         for(DocumentChange dc : value.getDocumentChanges()){
                             if(dc.getType() == DocumentChange.Type.ADDED ) {
                                 HorasVoluntarios doc = dc.getDocument().toObject(HorasVoluntarios.class);
-                                    registros.add(doc);
-                                    Log.i("REGISTRO EVENTO", registros.get(registros.size()-1).evento);
-                                    Log.i("REGISTRO USUARIO", registros.get(registros.size()-1).idVoluntario);
+                                registros.add(doc);
+                                Log.i("REGISTRO EVENTO", registros.get(registros.size()-1).evento);
+                                Log.i("REGISTRO USUARIO", registros.get(registros.size()-1).idVoluntario);
 
-                                    for(Evento evento : eventoList){
-                                        Log.i("FOR LOOP EVENTO ID", evento.idEvento);
-                                        for(HorasVoluntarios registro : registros){
-                                            Log.i("FOR LOOP REGISTRO ID:", registro.evento);
-                                            if(Objects.equals(evento.getIdEvento(), registro.getEvento())){
-                                                Log.i("MATCHING EVENT FOUND:", evento.idEvento);
-                                                if(!savedEventoArrayList.contains(evento)){
-                                                    savedEventoArrayList.add(evento);
-                                                }
+                                for(Evento evento : eventoList){
+                                    Log.i("FOR LOOP EVENTO ID", evento.idEvento);
+                                    for(HorasVoluntarios registro : registros){
+                                        Log.i("FOR LOOP REGISTRO ID:", registro.evento);
+                                        if(Objects.equals(evento.getIdEvento(), registro.getEvento())){
+                                            Log.i("MATCHING EVENT FOUND:", evento.idEvento);
+                                            if(!savedEventoArrayList.contains(evento)){
+                                                savedEventoArrayList.add(evento);
                                             }
                                         }
                                     }
+                                }
                             }
                         }
                         //EventChangeListener2();
@@ -181,39 +184,39 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
     private void EventChangeListener2() {
         for (HorasVoluntarios doc : registros) {
             db.collection("anuncios").addSnapshotListener(new EventListener<QuerySnapshot>() {
-                        @Override
-                        public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                @Override
+                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                            if(error != null){
+                    if(error != null){
 
-                                if(progressDialog.isShowing()){
-                                    progressDialog.dismiss();
-                                }
-                                Log.e("Firestore error", error.getMessage());
-                                return;
-                            }
+                        if(progressDialog.isShowing()){
+                            progressDialog.dismiss();
+                        }
+                        Log.e("Firestore error", error.getMessage());
+                        return;
+                    }
 
-                            for(DocumentChange dc : value.getDocumentChanges()){
-                                if(dc.getType() == DocumentChange.Type.ADDED ) {
-                                    if (dc.getDocument().getId() == doc.evento) {
+                    for(DocumentChange dc : value.getDocumentChanges()){
+                        if(dc.getType() == DocumentChange.Type.ADDED ) {
+                            if (dc.getDocument().getId() == doc.evento) {
 
-                                        Evento evento = dc.getDocument().toObject(Evento.class);
+                                Evento evento = dc.getDocument().toObject(Evento.class);
 
-                                        evento.idEvento = dc.getDocument().getId();
-                                        Log.i("FOUND MATCHING ID", dc.getDocument().getId());
+                                evento.idEvento = dc.getDocument().getId();
+                                Log.i("FOUND MATCHING ID", dc.getDocument().getId());
 
-                                        savedEventoArrayList.add(evento);
-                                        Log.i("ID ARRAY LIST", savedEventoArrayList.get(savedEventoArrayList.size() - 1).idEvento);
-                                    }
-                                }
-                            }
-
-                            eventosAdapter.notifyDataSetChanged();
-                            if(progressDialog.isShowing()){
-                                progressDialog.dismiss();
+                                savedEventoArrayList.add(evento);
+                                Log.i("ID ARRAY LIST", savedEventoArrayList.get(savedEventoArrayList.size() - 1).idEvento);
                             }
                         }
-                    });
+                    }
+
+                    eventosAdapter.notifyDataSetChanged();
+                    if(progressDialog.isShowing()){
+                        progressDialog.dismiss();
+                    }
+                }
+            });
         }
     }
 }

@@ -16,6 +16,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -69,6 +70,7 @@ public class UserPageActivity extends AppCompatActivity {
         changePic = findViewById(R.id.uploadPic);
         savedEvents = findViewById(R.id.savedEvents);
         profileImage = findViewById(R.id.profilePic);
+        historyEvents = findViewById(R.id.hisrtoryEvents);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         user = mAuth.getCurrentUser();
@@ -97,6 +99,7 @@ public class UserPageActivity extends AppCompatActivity {
         savedEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("Starting Activity", "Saved");
                 startActivity(new Intent(UserPageActivity.this, SavedEventoFragmentActivity.class));
             }
         });
@@ -119,6 +122,15 @@ public class UserPageActivity extends AppCompatActivity {
                 startActivity(new Intent(UserPageActivity.this, BadgesActivity.class));
             }
         });
+
+        historyEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("Starting Activity", "History");
+                startActivity(new Intent(UserPageActivity.this, HistorialEventosActivity.class));
+            }
+        });
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
