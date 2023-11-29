@@ -74,37 +74,49 @@ public class BadgesActivity extends AppCompatActivity {
         h10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),DiplomaActivity.class));
+                Intent h10 =new Intent(getApplicationContext(),DiplomaActivity.class);
+                h10.putExtra("horas",10);
+                startActivity(h10);
             }
         });
         h20.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),DiplomaActivity.class));
+                Intent h20 =new Intent(getApplicationContext(),DiplomaActivity.class);
+                h20.putExtra("horas",20);
+                startActivity(h20);
             }
         });
         h30.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),DiplomaActivity.class));
+                Intent h30 =new Intent(getApplicationContext(),DiplomaActivity.class);
+                h30.putExtra("horas",30);
+                startActivity(h30);
             }
         });
         h40.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),DiplomaActivity.class));
+                Intent h40 =new Intent(getApplicationContext(),DiplomaActivity.class);
+                h40.putExtra("horas",40);
+                startActivity(h40);
             }
         });
         h50.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),DiplomaActivity.class));
+                Intent h50 =new Intent(getApplicationContext(),DiplomaActivity.class);
+                h50.putExtra("horas",50);
+                startActivity(h50);
             }
         });
         h60.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),DiplomaActivity.class));
+                Intent h60 =new Intent(getApplicationContext(),DiplomaActivity.class);
+                h60.putExtra("horas",60);
+                startActivity(h60);
             }
         });
 

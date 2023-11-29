@@ -52,5 +52,6 @@ dependencies {
     implementation("com.google.firebase:firebase-storage-ktx:20.3.0")
     implementation("com.github.dhaval2404:imagepicker:2.1")
     implementation("com.squareup.picasso:picasso:2.8")
+    implementation("androidx.core:core:1.12.0")
 
 }
