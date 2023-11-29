@@ -1,23 +1,46 @@
 package com.example.voluntaria360;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
+import java.io.FileNotFoundException;
 
 public class UserPageActivity extends AppCompatActivity {
 
@@ -44,8 +67,9 @@ public class UserPageActivity extends AppCompatActivity {
         back = findViewById(R.id.returnbtn);
         totalHours = findViewById(R.id.totalhours);
         changePic = findViewById(R.id.uploadPic);
-        profileImage = findViewById(R.id.profilePic);
         savedEvents = findViewById(R.id.savedEvents);
+        profileImage = findViewById(R.id.profilePic);
+        historyEvents = findViewById(R.id.hisrtoryEvents);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         user = mAuth.getCurrentUser();
@@ -73,6 +97,7 @@ public class UserPageActivity extends AppCompatActivity {
         savedEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("Starting Activity", "Saved");
                 startActivity(new Intent(UserPageActivity.this, SavedEventoFragmentActivity.class));
             }
         });
@@ -95,6 +120,15 @@ public class UserPageActivity extends AppCompatActivity {
                 startActivity(new Intent(UserPageActivity.this, BadgesActivity.class));
             }
         });
+
+        historyEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("Starting Activity", "History");
+                startActivity(new Intent(UserPageActivity.this, HistorialEventosActivity.class));
+            }
+        });
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

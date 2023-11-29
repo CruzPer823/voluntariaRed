@@ -30,6 +30,11 @@
             android:exported="true"
             android:theme="@style/Theme.Voluntaria360v2.PopUps" />
         <activity
+            android:name=".HistorialEventosActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Voluntaria360v2"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".SavedEventoFragmentActivity"
             android:exported="true"
             android:theme="@style/Theme.Voluntaria360v2"
