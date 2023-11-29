@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +36,7 @@ import java.util.Objects;
 public class HistorialEventosActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
+    Button back;
     ArrayList<Evento> eventoList;
     ArrayList<Evento> savedEventoArrayList;
     ArrayList<HorasVoluntarios> registros;
@@ -50,6 +53,7 @@ public class HistorialEventosActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = findViewById(R.id.barra_Menu);
         navigation.setSelectedItemId(R.id.thirdFragment);
+        back = findViewById(R.id.returnbtn4);
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -75,8 +79,8 @@ public class HistorialEventosActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("LocoOo");
-        progressDialog.setMessage("LocOoOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        progressDialog.setMessage("Cargando");
+        progressDialog.setMessage("Cargando");
         progressDialog.show();
 
 
@@ -90,12 +94,17 @@ public class HistorialEventosActivity extends AppCompatActivity {
         savedEventoArrayList = new ArrayList<Evento>();
         registros = new ArrayList<HorasVoluntarios>();
         eventosAdapter = new HistorialEventosAdapter(HistorialEventosActivity.this, savedEventoArrayList);
-
         recyclerView.setAdapter(eventosAdapter);
 
         CollectEventos();
         Log.i("SAVEDEVENTOS COLLECT EVENTOS", "SAVEDEVENTOFRAGMENTACTIVITY");
         EventChangeListener();
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),UserPageActivity.class));
+            }
+        });
     }
 
     private void EventChangeListener() {
