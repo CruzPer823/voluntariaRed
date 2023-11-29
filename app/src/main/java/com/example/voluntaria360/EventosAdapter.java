@@ -95,7 +95,6 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            Button button = itemView.findViewById(R.id.guardarbtn);
             titulo = itemView.findViewById(R.id.eventotitulo);
             fecha = itemView.findViewById(R.id.fecha);
             descripcion = itemView.findViewById(R.id.descripcion);

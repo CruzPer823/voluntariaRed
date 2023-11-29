@@ -1,18 +1,21 @@
 package com.example.voluntaria360;
 
+import android.os.Parcelable;
+
 import com.google.firebase.Timestamp;
 
+import java.io.Serializable;
 import java.sql.Ref;
 import java.sql.Time;
 
-public class Evento {
+public class Evento{
     String titulo,descripcion,imagen,fechaEvento,idEvento;
     Timestamp fecha;
     Integer hrsMax;
-    Boolean tipo, saved;
+    Boolean tipo, saved, registered;
     public Evento(){}
 
-    public Evento(String titulo, Timestamp fecha, String descripcion, String imagen, Integer hrsMax, Boolean tipo, String fechaEvento, String idEvento, Boolean saved) {
+    public Evento(String titulo, Timestamp fecha, String descripcion, String imagen, Integer hrsMax, Boolean tipo, String fechaEvento, String idEvento, Boolean saved, Boolean registered) {
         this.titulo = titulo;
         this.idEvento = idEvento;
         this.fecha = fecha;
@@ -22,12 +25,18 @@ public class Evento {
         this.tipo = tipo;
         this.fechaEvento = fechaEvento;
         this.saved = saved;
+        this.registered = registered;
     }
 
     public Boolean getSaved() {
         return saved;
     }
-
+    public Boolean getRegistered() {
+        return registered;
+    }
+    public void setRegistered(Boolean registered) {
+        this.registered = registered;
+    }
     public void setSaved(Boolean saved) {
         this.saved = saved;
     }

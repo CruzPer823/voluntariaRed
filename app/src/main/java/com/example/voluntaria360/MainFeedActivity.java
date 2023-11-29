@@ -70,7 +70,6 @@ public class MainFeedActivity extends AppCompatActivity {
         registros = new ArrayList<HorasVoluntarios>();
         myAdapter = new EventosAdapter(getApplicationContext(), eventoArrayList);
         recyclerView.setAdapter(myAdapter);
-        //GetRegistros();
         EventChangeListener();
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -95,7 +94,6 @@ public class MainFeedActivity extends AppCompatActivity {
                     registros = new ArrayList<HorasVoluntarios>();
                     myAdapter = new EventosAdapter(getApplicationContext(), eventoArrayList);
                     recyclerView.setAdapter(myAdapter);
-
                     EventChangeListener();
                 }
             }

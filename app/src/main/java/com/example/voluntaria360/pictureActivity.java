@@ -60,13 +60,10 @@ public class pictureActivity extends AppCompatActivity {
     String myUri="";
     StorageTask uploadTask;
     StorageReference storageProfilePic;
-    ActivityPictureBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture);
-        binding = ActivityPictureBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
         aceptar = findViewById(R.id.aceptar);
         cancelar = findViewById(R.id.cancelar);
         profilePic = findViewById(R.id.profilePic);
@@ -152,7 +149,7 @@ public class pictureActivity extends AppCompatActivity {
     private void uploadProfileImage(){
         final ProgressDialog dialog = new ProgressDialog(this);
         dialog.setTitle("Imagen Establecida");
-        dialog.setMessage("Por favor espere mientras se sube su imagen");
+        dialog.setMessage("Por favor, espere mientras se sube su imagen");
         dialog.show();
         if(imageUri != null){
             final StorageReference fileRef = storageProfilePic.child(mAuth.getCurrentUser().getUid()+".jpg");

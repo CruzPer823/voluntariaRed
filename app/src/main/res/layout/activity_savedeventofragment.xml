@@ -5,6 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/testrecyclerview"
+        android:layout_width="397dp"
+        android:layout_height="720dp"
+        app:layout_constraintBottom_toTopOf="@+id/barra_Menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="1.0" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/barra_Menu"
         style="@style/barraMenu"
@@ -20,9 +31,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testrecyclerview"
-        app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/barra_menu" />
+
+    <Button
+        android:id="@+id/returnbtn2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/arrow"
+        android:rotation="180"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/textView2"
@@ -39,13 +62,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.024" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/testrecyclerview"
-        android:layout_width="414dp"
-        android:layout_height="734dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

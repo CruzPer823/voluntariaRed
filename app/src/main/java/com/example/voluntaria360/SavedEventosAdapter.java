@@ -1,6 +1,10 @@
 package com.example.voluntaria360;
 
+import static android.content.Intent.getIntent;
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,25 +51,22 @@ public class SavedEventosAdapter extends RecyclerView.Adapter<SavedEventosAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Evento evento = eventoList.get(position);
-        holder.titulo.setText(evento.titulo);
-        holder.fecha.setText(evento.fechaEvento);
-        holder.descripcion.setText(evento.descripcion);
-        holder.hrsMax.setText(evento.hrsMax + " horas");
-        Glide.with(context).load(evento.imagen).apply(new RequestOptions().override(holder.imagen.getMaxWidth(), holder.imagen.getMaxHeight())).into(holder.imagen);
-        db = FirebaseFirestore.getInstance();
-        holder.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (holder.button.getText() != "Guardado"){
-                    Map<String, Object> data = new HashMap<>();
-                    data.put("evento", evento.idEvento);
-                    data.put("idVoluntario", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                    db.collection("horasVoluntarios").add(data);
+            holder.titulo.setText(evento.titulo);
+            holder.fecha.setText(evento.fechaEvento);
+            holder.descripcion.setText(evento.descripcion);
+            holder.hrsMax.setText(evento.hrsMax + " horas");
+            Glide.with(context).load(evento.imagen).apply(new RequestOptions().override(holder.imagen.getMaxWidth(), holder.imagen.getMaxHeight())).into(holder.imagen);
+            db = FirebaseFirestore.getInstance();
+            holder.button.setText("Registrar Horas");
+            holder.button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent registrarHoras = new Intent(v.getContext(), addhorasActivity.class);
+                    registrarHoras.putExtra("idEvento", evento.idEvento);
+                    context.startActivity(registrarHoras);
                 }
-                holder.button.setText("Guardado");
-            }
-        });
+
+            });
     }
 
     @Override

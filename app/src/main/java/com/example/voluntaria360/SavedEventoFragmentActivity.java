@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,6 +35,7 @@ import java.util.Objects;
 public class SavedEventoFragmentActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
+    Button back;
     ArrayList<Evento> eventoList;
     ArrayList<Evento> savedEventoArrayList;
     ArrayList<HorasVoluntarios> registros;
@@ -45,10 +48,9 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_savedeventofragment);
-
+        back = findViewById(R.id.returnbtn2);
         BottomNavigationView navigation = findViewById(R.id.barra_Menu);
         navigation.setSelectedItemId(R.id.thirdFragment);
-
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -63,16 +65,24 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
                     overridePendingTransition(0,0);
                     return true;
                 } else if (itemId == R.id.thirdFragment) {
+                    startActivity(new Intent(getApplicationContext(), UserPageActivity.class));
+                    overridePendingTransition(0,0);
                     return true;
                 }
                 return false;
             }
         });
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), UserPageActivity.class));
+            }
+        });
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("LocoOo");
-        progressDialog.setMessage("LocOoOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        progressDialog.setMessage("Cargando");
+        progressDialog.setMessage("Cargando");
         progressDialog.show();
 
 
@@ -95,7 +105,7 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
 
     private void EventChangeListener() {
 
-        db2.collection("horasVoluntarios").whereEqualTo("idVoluntario", FirebaseAuth.getInstance().getCurrentUser().getUid())
+        db2.collection("horasVoluntarios").whereEqualTo("idVoluntario", FirebaseAuth.getInstance().getCurrentUser().getUid()).whereEqualTo("evidencia","").whereEqualTo("hrs",0)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -124,13 +134,13 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
                                             Log.i("MATCHING EVENT FOUND:", evento.idEvento);
                                             if(!savedEventoArrayList.contains(evento)){
                                                 savedEventoArrayList.add(evento);
+
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                        //EventChangeListener2();
                         eventosAdapter.notifyDataSetChanged();
                         if(progressDialog.isShowing()){
                             progressDialog.dismiss();
@@ -161,6 +171,7 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
                                     Evento doc = dc.getDocument().toObject(Evento.class);
 
                                     doc.idEvento = dc.getDocument().getId();
+                                    doc.registered = false;
                                     Log.i("COLLECT EVENTOS", dc.getDocument().getId());
 
                                     eventoList.add(doc);
@@ -176,42 +187,4 @@ public class SavedEventoFragmentActivity extends AppCompatActivity {
                 });
     }
 
-    private void EventChangeListener2() {
-        for (HorasVoluntarios doc : registros) {
-            db.collection("anuncios").addSnapshotListener(new EventListener<QuerySnapshot>() {
-                        @Override
-                        public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-
-                            if(error != null){
-
-                                if(progressDialog.isShowing()){
-                                    progressDialog.dismiss();
-                                }
-                                Log.e("Firestore error", error.getMessage());
-                                return;
-                            }
-
-                            for(DocumentChange dc : value.getDocumentChanges()){
-                                if(dc.getType() == DocumentChange.Type.ADDED ) {
-                                    if (dc.getDocument().getId() == doc.evento) {
-
-                                        Evento evento = dc.getDocument().toObject(Evento.class);
-
-                                        evento.idEvento = dc.getDocument().getId();
-                                        Log.i("FOUND MATCHING ID", dc.getDocument().getId());
-
-                                        savedEventoArrayList.add(evento);
-                                        Log.i("ID ARRAY LIST", savedEventoArrayList.get(savedEventoArrayList.size() - 1).idEvento);
-                                    }
-                                }
-                            }
-
-                            eventosAdapter.notifyDataSetChanged();
-                            if(progressDialog.isShowing()){
-                                progressDialog.dismiss();
-                            }
-                        }
-                    });
-        }
-    }
-}
+   }

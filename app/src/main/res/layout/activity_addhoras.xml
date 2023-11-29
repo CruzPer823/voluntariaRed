@@ -59,27 +59,10 @@
         android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.537"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
-
-    <Button
-        android:id="@+id/uploadPic"
-        android:layout_width="210dp"
-        android:layout_height="163dp"
-        android:layout_alignStart="@+id/profilePic"
-        android:layout_alignTop="@+id/profilePic"
-        android:layout_alignEnd="@+id/profilePic"
-        android:layout_alignBottom="@+id/profilePic"
-        android:background="@drawable/upload"
-        android:backgroundTint="@null"
-        app:layout_constraintBottom_toBottomOf="@+id/profilePic"
-        app:layout_constraintEnd_toEndOf="@+id/profilePic"
-        app:layout_constraintStart_toStartOf="@+id/profilePic"
-        app:layout_constraintTop_toTopOf="@+id/profilePic"
-        app:layout_constraintVertical_bias="0.54"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintVertical_bias="0.293" />
 
     <Button
         android:id="@+id/returnbtn"
@@ -107,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTime"
-        app:layout_constraintVertical_bias="0.209"
+        app:layout_constraintVertical_bias="0.373"
         tools:ignore="HardcodedText,TouchTargetSizeCheck,TextSizeCheck" />
 
     <EditText
@@ -119,13 +102,26 @@
         android:ems="10"
         android:fontFamily="@font/quicksand_bold"
         android:hint="Horas..."
-        android:inputType="time"
+        android:inputType="number"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profilePic"
-        app:layout_constraintVertical_bias="0.14" />
+        app:layout_constraintVertical_bias="0.242" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/uploadPicHours"
+        android:layout_width="282dp"
+        android:layout_height="151dp"
+        app:layout_constraintBottom_toBottomOf="@+id/profilePic"
+        app:layout_constraintEnd_toEndOf="@+id/profilePic"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="@+id/profilePic"
+        app:layout_constraintTop_toTopOf="@+id/profilePic"
+        app:shapeAppearanceOverlay="@style/RoundedSquare"
+        app:srcCompat="@drawable/upload" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
