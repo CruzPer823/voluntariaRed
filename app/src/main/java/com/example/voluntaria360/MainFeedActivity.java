@@ -130,7 +130,7 @@ public class MainFeedActivity extends AppCompatActivity {
         });
     }
     private void AdChangeListener() {
-        db.collection("anuncios").orderBy("fecha", Query.Direction.ASCENDING)
+        db.collection("anuncios").orderBy("fecha", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -161,7 +161,7 @@ public class MainFeedActivity extends AppCompatActivity {
     }
 
     private void EventChangeListener() {
-        db.collection("anuncios").orderBy("fecha", Query.Direction.ASCENDING)
+        db.collection("anuncios").orderBy("fecha", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {

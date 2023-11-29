@@ -145,7 +145,7 @@ public class HistorialEventosActivity extends AppCompatActivity {
     }
 
     private void CollectEventos() {
-        db.collection("anuncios").orderBy("fecha", Query.Direction.ASCENDING)
+        db.collection("anuncios").orderBy("fecha", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
