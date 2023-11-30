@@ -229,6 +229,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/quicksand_bold"
         android:text="correo"
+        android:maxWidth="200dp"
         android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"

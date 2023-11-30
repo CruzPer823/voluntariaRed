@@ -30,10 +30,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quicksand_bold"
+                android:maxWidth="220dp"
                 android:text="Titulo"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="18dp"
-                android:maxWidth="220dp"/>
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/horas"
